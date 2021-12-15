@@ -1,9 +1,11 @@
 /* LOGIN - MAIN.JS - dp 2017 */
 
+console.log("Its connected")
+
 // LOGIN TABS
-$(function() {
+$(function () {
     var tab = $('.tabs h3 a');
-    tab.on('click', function(event) {
+    tab.on('click', function (event) {
         event.preventDefault();
         tab.removeClass('active');
         $(this).addClass('active');
@@ -14,9 +16,9 @@ $(function() {
 });
 
 // SLIDESHOW
-$(function() {
+$(function () {
     $('#slideshow > div:gt(0)').hide();
-    setInterval(function() {
+    setInterval(function () {
         $('#slideshow > div:first')
             .fadeOut(1000)
             .next()
@@ -27,9 +29,9 @@ $(function() {
 });
 
 // CUSTOM JQUERY FUNCTION FOR SWAPPING CLASSES
-(function($) {
+(function ($) {
     'use strict';
-    $.fn.swapClass = function(remove, add) {
+    $.fn.swapClass = function (remove, add) {
         this.removeClass(remove).addClass(add);
         return this;
     };
@@ -37,8 +39,8 @@ $(function() {
 
 // SHOW/HIDE PANEL ROUTINE (needs better methods)
 // I'll optimize when time permits.
-$(function() {
-    $('.agree,.forgot, #toggle-terms, .log-in, .sign-up').on('click', function(event) {
+$(function () {
+    $('.agree,.forgot, #toggle-terms, .log-in, .sign-up').on('click', function (event) {
         event.preventDefault();
         var terms = $('.terms'),
             recovery = $('.recovery'),
@@ -57,8 +59,7 @@ $(function() {
                 close.swapClass('closed', 'open');
                 arrow.swapClass('inactive', 'active');
             }
-        }
-        else if ($(this).hasClass('forgot') || $(this).hasClass('sign-up') || $(this).is('#toggle-terms')) {
+        } else if ($(this).hasClass('forgot') || $(this).hasClass('sign-up') || $(this).is('#toggle-terms')) {
             if (recovery.hasClass('open')) {
                 recovery.swapClass('open', 'closed');
                 close.swapClass('open', 'closed');
@@ -76,11 +77,11 @@ $(function() {
 });
 
 // DISPLAY MSSG
-$(function() {
-    $('.recovery .button').on('click', function(event) {
+$(function () {
+    $('.recovery .button').on('click', function (event) {
         event.preventDefault();
         $('.recovery .mssg').addClass('animate');
-        setTimeout(function() {
+        setTimeout(function () {
             $('.recovery').swapClass('open', 'closed');
             $('#toggle-terms').swapClass('open', 'closed');
             $('.tabs-content .fa').swapClass('active', 'inactive');
@@ -90,8 +91,8 @@ $(function() {
 });
 
 // DISABLE SUBMIT FOR DEMO
-$(function() {
-    $('.button').on('click', function(event) {
+$(function () {
+    $('.button').on('click', function (event) {
         $(this).stop();
         event.preventDefault();
         return false;
