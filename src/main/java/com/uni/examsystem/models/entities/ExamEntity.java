@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import java.time.Duration;
 import java.util.Set;
 
 @Entity
@@ -11,6 +12,8 @@ import java.util.Set;
 public class ExamEntity extends BaseEntity{
     @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
+    private Duration timeGiven;
     @ManyToMany
     private Set<QuestionEntity> questions;
     @ManyToMany
@@ -22,6 +25,14 @@ public class ExamEntity extends BaseEntity{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Duration getTimeGiven() {
+        return timeGiven;
+    }
+
+    public void setTimeGiven(Duration timeGiven) {
+        this.timeGiven = timeGiven;
     }
 
     public Set<QuestionEntity> getQuestions() {
