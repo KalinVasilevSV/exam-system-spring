@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "QUESTIONS")
-public class QuestionEntity extends BaseEntity{
+public class QuestionEntity extends BaseEntity {
     @Column(nullable = false)
     private String question;
     @Column(nullable = false)

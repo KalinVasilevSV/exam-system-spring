@@ -3,23 +3,24 @@ package com.uni.examsystem.models.entities;
 import com.uni.examsystem.models.entities.enums.UserRoleEnum;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "USERS")
-public class UserEntity extends BaseEntity{
+public class UserEntity extends BaseEntity {
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String username;
     @Column(nullable = false)
     private String firstName;
     @Column(nullable = false)
-    private  String lastName;
-    @Column(nullable = false)
+    private String lastName;
+    @Column(nullable = false, unique = true)
     private String facNo;
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private UserRoleEnum role;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<UserRoleEntity> roles = new HashSet<>();
     @ManyToMany
     private Set<ExamEntity> exams;
 
@@ -55,12 +56,19 @@ public class UserEntity extends BaseEntity{
         this.facNo = facNo;
     }
 
-    public UserRoleEnum getRole() {
-        return role;
+    public Set<UserRoleEntity> getRoles() {
+        return roles;
     }
 
-    public void setRole(UserRoleEnum role) {
-        this.role = role;
+    public void setRoles(Set<UserRoleEntity> roles) {
+        this.roles = roles;
     }
 
+    public Set<ExamEntity> getExams() {
+        return exams;
+    }
+
+    public void setExams(Set<ExamEntity> exams) {
+        this.exams = exams;
+    }
 }

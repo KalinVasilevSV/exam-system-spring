@@ -9,7 +9,7 @@ import java.time.Instant;
 
 @Entity
 @Table(name = "SCORE_CARDS")
-public class ScoreCardEntity extends BaseEntity{
+public class ScoreCardEntity extends BaseEntity {
     @OneToOne
     private ExamEntity exam;
     @OneToOne

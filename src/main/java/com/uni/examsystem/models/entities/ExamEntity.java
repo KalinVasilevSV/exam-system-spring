@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "EXAMS")
-public class ExamEntity extends BaseEntity{
+public class ExamEntity extends BaseEntity {
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
@@ -17,7 +17,7 @@ public class ExamEntity extends BaseEntity{
     @ManyToMany
     private Set<QuestionEntity> questions;
     @ManyToMany
-    private  Set<UserEntity> users;
+    private Set<UserEntity> users;
 
     public String getName() {
         return name;

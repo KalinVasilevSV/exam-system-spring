@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "ANSWER_SETS")
-public class AnswerSetEntity extends BaseEntity{
+public class AnswerSetEntity extends BaseEntity {
     @Column(nullable = false)
     private String a;
     @Column(nullable = false)
