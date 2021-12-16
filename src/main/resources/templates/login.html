@@ -21,18 +21,22 @@
 <body>
 
 <div class="position-absolute top-50 start-50 translate-middle">
-<form>
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Username</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
-    </div>
+    <form th:action="@{/users/login}" th:method="post">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Username</label>
+            <input type="email" class="form-control" th:value="${username}"
+                   id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <p th:if="${bad_credentials}" class="errors alert alert-danger">
+            Invalid username or password.
+        </p>
 
-    <button type="submit" class="btn btn-primary">Login</button>
-</form>
+        <input type="submit" class="btn btn-primary btn-lg" value="Login"/>
+    </form>
 </div>
 
 </body>
