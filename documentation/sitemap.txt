@@ -1,70 +1,230 @@
 >login (url: ~/login)
+	>index (url: ~/index)
 |
 	>users (url: ~/users)
-|		newuser (url: ~/users/newuser)
-|		user(url: ~/users/{user})
-|			upuser (url: ~/{user}/upuser)
-|			user exams (url: ~/{user}/exams)
-|				user exam scorecard(url: ~/{user}/{exam}/{scorecard})
+|	----newuser (url: ~/users/newuser)
+|	----user(url: ~/users/{user})
+|	--------upuser (url: ~/{user}/upuser)
+|	--------user exams (url: ~/{user}/exams)
+|	------------user exam scorecard(url: ~/{user}/{exam}/{scorecard})
 |				
 	>exams (url: ~/exams)
-|		newexam (url: ~/exams/newexam)
-|		exam (url: ~/exams/{exam})		
-|			upexam (url: ~/{exam}/upexam)
-|			users (url: ~/{exam}/users)
-|			scorecards (url: ~/{exam}/scorecards)
-|				scorecard (url: ~/{exam}/{scorecard})
+|	----newexam (url: ~/exams/newexam)
+|	----exam (url: ~/exams/{exam})		
+|	--------upexam (url: ~/{exam}/upexam)
+|	--------exam users (url: ~/{exam}/users)
+|	--------exam scorecards (url: ~/{exam}/scorecards)
+|	------------exam user scorecard (url: ~/{exam}/{scorecard})
+|	---------------- exam user scorecard score (url: ~/{exam}/{scorecard}/score)
 |				
 	>questions (url: ~/questions)
-|		question (url: ~/{question})
-|			answersets (url: ~/{question}/answersets)
-|				answerset (url: ~/{question}/{answerset})
+|	----newquestion (url: ~/newquestion)
+|	----question (url: ~/{question})
+|	--------upquestion (url: ~/{question}/upquestion)
+|	------------newanswerset(url: ~/newanswerset)
+|	------------answerset (url: ~/{answerset})
+|	----------------upanswerset(url: ~/{answerset}/upanswerset)
+
+#index
+	elements:
+		- short description text
+	links:
+		- users
+		- exams
+		- questions
 
 #users
 	elements:
 		- search fields with "search" button
 		- a table of users with "add", "update" and "delete" buttons
+		- "back" button
 	links:
 		- newuser
-		- user
+		- {user}
 		- upuser
+		- index
 
 #newuser
 	elements:
 		- fields for new user creation with "create" and "cancel" buttons
 	links:
-		- user
+		- {user}
 		- users
 
 #user
 	elements:
-		- fields for user details with "update","delete" and "back" buttons
+		- fields for user details with "update" and "delete" buttons
+		- "back" button
 	links:
-		- users
 		- upuser
 		- user exams
+		- {exam} users
+		- users
 		
+
 #upuser
 	elements:
-		- fields for user details correction, filled with current user details with "update" and "cancel" buttons
+		- fields for user details correction, filled with current user details with "update" button
+		- "cancel" button
 	links:
-		- user
+		- {user}
+		
+#user exams
+	elements:
+		- a table of user exams with "view" and "take" buttons
+		- "back" button
+	links:
+		- user exam scorecard
+		- {user}
 
+#user exam scorecard
+	elements:
+		- label with either "scored" or "unscored"
+		- label with score
+		- "back" button
+		
 #scorecards:
 	elements:
 		- a table of turned in scorecards with "view" button
 		- a "back" button
 
-#scorecard:
-	elements:
-		- label with either "scored" or "unscored"
-		- label with score
-
 #exams
 	elements:
-		- a table of exams with "view","add", "update" and "delete" buttons
+		- a table of exams with "view" and "add" buttons
+		- "back" button
 	links:
 		- newexam
+		- {exam}
+		- index
+
+#newexam
+	elements:
+		- fields for new exam with "create" button
+		- "cancel" button
+	links:
+		- exams
+		
+#exam
+	elements:
+		- labels with exam details with "update" and "delete" buttons
+		- "manage users" button
+		- a table with exam questions
+		- "back" button
+	links:
 		- upexam
-		- exam
-		- scorecards
+		- {exam} users
+		- exams
+
+#upexam
+	elements:
+		- fields for exam details correction
+		- a table with exam questions with "view", "update" and "remove" buttons
+		- a table with available questions with "add to exam", "update" and "delete" buttons
+		- "cancel" button
+	links:
+		- {exam}
+		- {question}
+		- {question} upquestion
+
+#exam users
+	elements:
+		- a table with users assigned to the exam with "view" and "remove" buttons
+		- a table with available users with "add to exam" button
+		- "back" button
+	links:
+		- {user}
+		- {exam}
+
+#exam scorecards
+	elements:
+		- a table with exam scorecards with "view" and "score" buttons
+		- "back" button
+	links:
+		- {scorecard}
+		- {exam}
+
+#exam scorecard
+	elements:
+		- labels with scorecard details with "score" button
+		- "back" button
+	links:
+		- {scorecard} score
+		- {exam} scorecards
+		- {user}
+
+#exam scorecard score
+	elements:
+		- labels with scorecard details and score fields with "score" and "clear scoring" buttons
+		- "save" button
+		- "back" button
+	links:
+		- {exam} scorecard
+
+#questions
+	elements:
+		- a table of questions with "view","add" and "delete" buttons
+		- "back" button
+	links:
+		- newquestion
+		- {question}
+		- index
+
+#newquestion
+	elements:
+		- fields with details for new question creation with "create" button
+		- a table with available answer sets with "view", "create", "update", "add to question" and "delete" buttons
+		- "cancel" button
+	links:
+		- {answerset}
+		- {newanswerset}
+		- {upanswerset}
+		- questions
+
+#question
+	elements:
+		- labels with question details and an "update" button
+		- a table with available answer sets with "view", "create", "update", "add to question" and "delete" buttons
+		- "back" button
+	links:
+		- {question} upquestion
+		- {answerset}
+		- {newanswerset}
+		- {answerset} upanswerset
+		- questions
+
+#upquestion
+	elements:
+		- fields with question details and an "update" button
+		- a table with available answer sets with "view", "create", "update", "add to question" and "delete" buttons
+		- "cancel" button
+	links:
+		- {answerset}
+		- {newanswerset}
+		- {answerset} upanswerset
+		- {question}
+
+
+#answerset
+	elements:
+		- labels for answerset details with "update" button
+		- "back" button
+	links:
+		- {answerset} upanswerset
+		- newquestion
+		- {question}
+
+#newanswerset
+	elements:
+		- fields for new answerset creation with "create" button
+		- "cancel" button
+	links:
+		- {question}
+		- {question} upquestion
+
+#upanswerset
+	elements:
+		- fields with answerset details with "update" button
+		- "cancel" button
+	links:
+		- {answerset}
+		- {question}
