@@ -20,7 +20,6 @@ public class UserEntity extends BaseEntity {
     private String lastName;
     @Column(nullable = false, unique = true)
     private String facNo;
-    @Enumerated(EnumType.STRING)
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<UserRoleEntity> roles = new HashSet<>();
     @ManyToMany

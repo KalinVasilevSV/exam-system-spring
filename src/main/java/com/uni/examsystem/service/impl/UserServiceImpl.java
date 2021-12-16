@@ -28,8 +28,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void initializeUsersAndRoles() {
-        initializeUsers();
         initializeRoles();
+        initializeUsers();
     }
 
 
