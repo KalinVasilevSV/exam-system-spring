@@ -1,4 +1,4 @@
->login (url: ~/login)
+>login (url: ~/login) ADMIN/USER
 	>index (url: ~/index) ADMIN/USER
 |
 	>users (url: ~/users) ADMIN
@@ -45,7 +45,9 @@
 
 #newuser ADMIN
 	elements:
-		- fields for new user creation with "create"(1) and "cancel"(2) buttons
+		- fields for new user creation
+		- "create"(1) button
+		- "cancel"(2) button
 	links:
 		- {user}(1)
 		- users(2)
