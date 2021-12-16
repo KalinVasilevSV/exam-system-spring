@@ -1,31 +1,30 @@
 >login (url: ~/login)
-	>index (url: ~/index)
+	>index (url: ~/index) ADMIN/USER
 |
-	>users (url: ~/users)
-|	----newuser (url: ~/users/newuser)
-|	----user(url: ~/users/{user})
-|	--------upuser (url: ~/{user}/upuser)
-|	--------user exams (url: ~/{user}/exams)
-|	------------user exam scorecard(url: ~/{user}/{exam}/{scorecard})
+	>users (url: ~/users) ADMIN
+|	----newuser (url: ~/users/newuser) ADMIN
+|	----user(url: ~/users/{user}) ADMIN/USER
+|	--------upuser (url: ~/users/{user}/upuser) ADMIN/USER
+|	--------user exam (url: ~/users/{user}/{exam}) ADMIN/USER
+|	------------user exam take (url: ~/users/{user}/{exam}/take) USER
 |				
-	>exams (url: ~/exams)
-|	----newexam (url: ~/exams/newexam)
-|	----exam (url: ~/exams/{exam})		
-|	--------upexam (url: ~/{exam}/upexam)
-|	--------exam users (url: ~/{exam}/users)
-|	--------exam scorecards (url: ~/{exam}/scorecards)
-|	------------exam user scorecard (url: ~/{exam}/{scorecard})
-|	---------------- exam user scorecard score (url: ~/{exam}/{scorecard}/score)
+	>exams (url: ~/exams) ADMIN
+|	----newexam (url: ~/exams/newexam) ADMIN
+|	----exam (url: ~/exams/{exam}) ADMIN
+|	--------upexam (url: ~/exams/{exam}/upexam) ADMIN
+|	--------upexam users(url: ~/exams/{exam}/upexam/users) ADMIN
+|	--------upexam questions(url: ~/exams/{exam}/upexam/questions) ADMIN
+|	--------exam user scorecard (url: ~/exams/{exam}/{user}/{scorecard}) ADMIN
+|	--------exam user scorecard score (url: ~/exams/{exam}/{user}/{scorecard}/score) ADMIN
 |				
-	>questions (url: ~/questions)
-|	----newquestion (url: ~/newquestion)
-|	----question (url: ~/{question})
-|	--------upquestion (url: ~/{question}/upquestion)
-|	------------newanswerset(url: ~/newanswerset)
-|	------------answerset (url: ~/{answerset})
-|	----------------upanswerset(url: ~/{answerset}/upanswerset)
+	>questions (url: ~/questions) ADMIN
+|	----newquestion (url: ~/questions/newquestion) ADMIN
+|	----question (url: ~/questions/{question}) ADMIN
+|	--------upquestion (url: ~/questions/{question}/upquestion) ADMIN
+|	--------newanswerset(url: ~/questions/{question}/newanswerset) ADMIN
+|	--------upanswerset(url: ~/questions/{question}/upanswerset) ADMIN
 
-#index
+#index ADMIN/USER
 	elements:
 		- short description text
 	links:
@@ -33,198 +32,199 @@
 		- exams
 		- questions
 
-#users
+#users ADMIN
 	elements:
 		- search fields with "search" button
-		- a table of users with "add", "update" and "delete" buttons
-		- "back" button
+		- a table of users with "view"(1),"add"(2), "update"(3) and "delete" buttons
+		- "back" button (4)
 	links:
-		- newuser
-		- {user}
-		- upuser
-		- index
+		- {user}(1)
+		- newuser(2)
+		- upuser(3)
+		- index(4)
 
-#newuser
+#newuser ADMIN
 	elements:
-		- fields for new user creation with "create" and "cancel" buttons
+		- fields for new user creation with "create"(1) and "cancel"(2) buttons
 	links:
-		- {user}
-		- users
+		- {user}(1)
+		- users(2)
 
-#user
+#{user} ADMIN/USER
 	elements:
-		- fields for user details with "update" and "delete" buttons
-		- "back" button
+		- fields for user details with "update"(1) and "delete" buttons
+		- a table of exams this user is assigned to with a "view"(2) button
+		- "back" button (3)
 	links:
-		- upuser
-		- user exams
-		- {exam} users
-		- users
+		- upuser(1)
+		- {user}{exam}(2)
+		- users (3) ADMIN
+		- index (3) USER
 		
 
-#upuser
+#upuser ADMIN/USER
 	elements:
-		- fields for user details correction, filled with current user details with "update" button
-		- "cancel" button
+		- fields for user details correction, filled with current user details
+		- "save" button (1)
+		- "cancel" button (2)
 	links:
-		- {user}
+		- {user}(1)(2)
 		
-#user exams
+#{user} {exam} ADMIN/USER
 	elements:
-		- a table of user exams with "view" and "take" buttons
-		- "back" button
+		- an {exam} page with an added "take"(1) button and a table with scorecard details with a label of "scored" or "unscored"
+		- "back" button(2)
 	links:
-		- user exam scorecard
-		- {user}
+		- {user} {exam} take(1) USER
+		- {user}(2) ADMIN/USER
 
-#user exam scorecard
+#{user} {exam} take USER
 	elements:
-		- label with either "scored" or "unscored"
-		- label with score
-		- "back" button
+		- exam questions
+		- a timer
+		- "submit" button(1)
+	links:
+		- {user}(1)
 		
-#scorecards:
+#exams ADMIN
 	elements:
-		- a table of turned in scorecards with "view" button
-		- a "back" button
-
-#exams
-	elements:
-		- a table of exams with "view" and "add" buttons
-		- "back" button
+		- a table of exams with "view"(1) and "add"(2) buttons
+		- "back" button(3)
 	links:
-		- newexam
-		- {exam}
-		- index
+		- {exam}(1)
+		- newexam(2)
+		- index(3)
 
-#newexam
+#newexam ADMIN
 	elements:
-		- fields for new exam with "create" button
-		- "cancel" button
+		- fields for new exam
+		- "create" button(1)
+		- "cancel" button(2)
 	links:
-		- exams
+		- {exam}(1)
+		- exams(2)
 		
-#exam
+#{exam} ADMIN
 	elements:
-		- labels with exam details with "update" and "delete" buttons
-		- "manage users" button
-		- a table with exam questions
-		- "back" button
+		- labels with exam details with "update"(1) and "delete" buttons
+		- a table of a assigned users with "turned in", "not turned in", "scored" and "unscored" labels with "view"(2) and "view score card"(3) buttons next to each
+		- "manage users" button(4)
+		- "manage questions" button(5)
+		- "finilize" button(6)
+		- "back" button(7)
 	links:
-		- upexam
-		- {exam} users
-		- exams
+		- {exam}(6)(7)
+		- {user}(2)
+		- {exam}{user}{scorecard}(3)
+		- {exam} upexam(1)
+		- {exam} upexam users(4)
+		- {exam} upexam questions(5)
 
-#upexam
+#{exam} upexam ADMIN
 	elements:
 		- fields for exam details correction
-		- a table with exam questions with "view", "update" and "remove" buttons
-		- a table with available questions with "add to exam", "update" and "delete" buttons
-		- "cancel" button
+		- "save" button(1)
+		- "cancel" button(2)
 	links:
-		- {exam}
-		- {question}
-		- {question} upquestion
-
-#exam users
+		- {exam}(1)(2)
+		
+#{exam} upexam questions ADMIN
 	elements:
-		- a table with users assigned to the exam with "view" and "remove" buttons
-		- a table with available users with "add to exam" button
-		- "back" button
+		- labels with exam details
+		- a table with exam questions with "view"(1), "update"(2) and "remove" buttons
+		- a table with available questions with "add to exam", "update"(3) and "delete" buttons
+		- "save" button(4)
+		- "back" button(5)
 	links:
-		- {user}
-		- {exam}
+		- {exam}(4)(5)
+		- {question}(1)
+		- {question} upquestion(2)(3)
 
-#exam scorecards
+#{exam} upexam users ADMIN
 	elements:
-		- a table with exam scorecards with "view" and "score" buttons
-		- "back" button
+		- labels with exam details
+		- a table with exam users with "view"(1) and "remove" buttons
+		- a table with users questions with "add to exam" button
+		- "save" button(2)
+		- "back" button(3)
 	links:
-		- {scorecard}
-		- {exam}
+		- {exam}(2)(3)
+		- {user}(1)
 
-#exam scorecard
+#{exam} {user} {scorecard} ADMIN
 	elements:
-		- labels with scorecard details with "score" button
-		- "back" button
+		- labels with scorecard details with "score"(1) button
+		- "save" button(2)
+		- "back" button(3)
 	links:
-		- {scorecard} score
-		- {exam} scorecards
-		- {user}
+		- {exam}(2)(3)
+		- {exam}{user}{scorecard}score(1)
 
-#exam scorecard score
+#{exam} {user} {scorecard} score ADMIN
 	elements:
 		- labels with scorecard details and score fields with "score" and "clear scoring" buttons
-		- "save" button
-		- "back" button
+		- "save" button(1)
+		- "back" button(2)
 	links:
-		- {exam} scorecard
+		- {exam}(1)(2)
 
-#questions
+#questions ADMIN
 	elements:
-		- a table of questions with "view","add" and "delete" buttons
-		- "back" button
+		- a table of questions with "view"(1),"add"(2) and "delete" buttons
+		- "back" button(3)
 	links:
-		- newquestion
-		- {question}
-		- index
+		- newquestion(2)
+		- {question}(1)
+		- index(3)
 
-#newquestion
+#newquestion ADMIN
 	elements:
-		- fields with details for new question creation with "create" button
-		- a table with available answer sets with "view", "create", "update", "add to question" and "delete" buttons
-		- "cancel" button
+		- fields with details for new question and answerset creation
+		- "create" button(1)
+		- "cancel" button(2)
 	links:
-		- {answerset}
-		- {newanswerset}
-		- {upanswerset}
-		- questions
+		- {question}(1)
+		- questions(2)
 
-#question
+#{question} ADMIN
 	elements:
-		- labels with question details and an "update" button
-		- a table with available answer sets with "view", "create", "update", "add to question" and "delete" buttons
-		- "back" button
+		- labels with question and answerset details
+		- an "update"(1) button for question text
+		- "new"(2), "update"(3) and "delete" buttons for answerset
+		- "back" button(4)
 	links:
-		- {question} upquestion
-		- {answerset}
-		- {newanswerset}
-		- {answerset} upanswerset
-		- questions
+		- {question}upquestion(1)
+		- {question}newanswerset(2)
+		- {question}upanswerset(3)
+		- questions(4)
 
-#upquestion
+#{question} upquestion ADMIN
 	elements:
-		- fields with question details and an "update" button
-		- a table with available answer sets with "view", "create", "update", "add to question" and "delete" buttons
-		- "cancel" button
+		- label with old question text
+		- field with old question text for correction 
+		- an "update" button(1)
+		- "cancel" button(2)
 	links:
-		- {answerset}
-		- {newanswerset}
-		- {answerset} upanswerset
-		- {question}
+		- {question}(1)(2)
 
-
-#answerset
+#{question} newanswerset ADMIN
 	elements:
-		- labels for answerset details with "update" button
-		- "back" button
+		- label with question text
+		- labels with old answerset details if present
+		- fields for new answerset creation
+		- "create" button(1)
+		- "save" button(2)
+		- "cancel" button(3)
 	links:
-		- {answerset} upanswerset
-		- newquestion
-		- {question}
+		- {question}(1)(2)(3)
 
-#newanswerset
+#{question} upanswerset ADMIN
 	elements:
-		- fields for new answerset creation with "create" button
-		- "cancel" button
+		- label with question text
+		- labels with old answerset details if present
+		- fields for new answerset creation
+		- "update" button(1)
+		- "save" button(2)
+		- "cancel" button(3)
 	links:
-		- {question}
-		- {question} upquestion
-
-#upanswerset
-	elements:
-		- fields with answerset details with "update" button
-		- "cancel" button
-	links:
-		- {answerset}
-		- {question}
+		- {question}(1)(2)(3)
