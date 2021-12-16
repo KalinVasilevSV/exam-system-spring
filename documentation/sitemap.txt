@@ -1,0 +1,70 @@
+>login (url: ~/login)
+|
+	>users (url: ~/users)
+|		newuser (url: ~/users/newuser)
+|		user(url: ~/users/{user})
+|			upuser (url: ~/{user}/upuser)
+|			user exams (url: ~/{user}/exams)
+|				user exam scorecard(url: ~/{user}/{exam}/{scorecard})
+|				
+	>exams (url: ~/exams)
+|		newexam (url: ~/exams/newexam)
+|		exam (url: ~/exams/{exam})		
+|			upexam (url: ~/{exam}/upexam)
+|			users (url: ~/{exam}/users)
+|			scorecards (url: ~/{exam}/scorecards)
+|				scorecard (url: ~/{exam}/{scorecard})
+|				
+	>questions (url: ~/questions)
+|		question (url: ~/{question})
+|			answersets (url: ~/{question}/answersets)
+|				answerset (url: ~/{question}/{answerset})
+
+#users
+	elements:
+		- search fields with "search" button
+		- a table of users with "add", "update" and "delete" buttons
+	links:
+		- newuser
+		- user
+		- upuser
+
+#newuser
+	elements:
+		- fields for new user creation with "create" and "cancel" buttons
+	links:
+		- user
+		- users
+
+#user
+	elements:
+		- fields for user details with "update","delete" and "back" buttons
+	links:
+		- users
+		- upuser
+		- user exams
+		
+#upuser
+	elements:
+		- fields for user details correction, filled with current user details with "update" and "cancel" buttons
+	links:
+		- user
+
+#scorecards:
+	elements:
+		- a table of turned in scorecards with "view" button
+		- a "back" button
+
+#scorecard:
+	elements:
+		- label with either "scored" or "unscored"
+		- label with score
+
+#exams
+	elements:
+		- a table of exams with "view","add", "update" and "delete" buttons
+	links:
+		- newexam
+		- upexam
+		- exam
+		- scorecards
