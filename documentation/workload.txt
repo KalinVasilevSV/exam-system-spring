@@ -1,5 +1,10 @@
 WORKLOAD
 
 Tano
-Georgi
-Kalin
+Georgi:
+index
+users
+
+Kalin:
+questions
+exams

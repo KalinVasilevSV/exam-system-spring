@@ -28,9 +28,13 @@
 	elements:
 		- short description text
 	links:
+		ADMIN
+		- {user}
 		- users
 		- exams
 		- questions
+		USER
+		-{user}
 
 #users ADMIN
 	elements:
