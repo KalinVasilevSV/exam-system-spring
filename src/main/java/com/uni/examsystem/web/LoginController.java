@@ -20,7 +20,7 @@ public class LoginController {
     @PostMapping("/users/login-error")
     public String failedLogin(@ModelAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
                                       String username, RedirectAttributes attributes) {
-        attributes.addFlashAttribute("bad-credentials", true);
+        attributes.addFlashAttribute("bad_credentials", true);
         attributes.addFlashAttribute("username", username);
 
         return "redirect:/users/login";

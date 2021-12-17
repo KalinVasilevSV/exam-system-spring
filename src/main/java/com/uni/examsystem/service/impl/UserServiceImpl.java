@@ -91,8 +91,6 @@ public class UserServiceImpl implements UserService {
             admin.setRoles(Set.of(adminRole, userRole));
             //todo implement setExams() for users
 
-            userRepository.save(admin);
-
 
             UserEntity pesho = new UserEntity();
             pesho.setUsername("pesho");
@@ -102,7 +100,7 @@ public class UserServiceImpl implements UserService {
             pesho.setFacNo("0123456789");
             pesho.setRoles(Set.of(userRole));
 
-            userRepository.save(pesho);
+            userRepository.saveAll(List.of(admin, pesho));
 
 
         }
