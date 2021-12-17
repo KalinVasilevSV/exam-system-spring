@@ -9503,7 +9503,7 @@
 													"top": 200,
 													"width": 124.66162109375,
 													"height": 13,
-													"text": "user exam"
+													"text": "user-exam"
 												},
 												{
 													"_type": "LabelView",
@@ -9703,7 +9703,7 @@
 													"top": 368,
 													"width": 152.84521484375,
 													"height": 13,
-													"text": "user exam take"
+													"text": "user-exam-take"
 												},
 												{
 													"_type": "LabelView",
@@ -10703,7 +10703,7 @@
 													"top": 512,
 													"width": 178.8388671875,
 													"height": 13,
-													"text": "upexam users"
+													"text": "upexam-users"
 												},
 												{
 													"_type": "LabelView",
@@ -10903,7 +10903,7 @@
 													"top": 624,
 													"width": 202.69970703125,
 													"height": 13,
-													"text": "upexam questions"
+													"text": "upexam-questions"
 												},
 												{
 													"_type": "LabelView",
@@ -11086,7 +11086,7 @@
 													},
 													"visible": false,
 													"font": "Arial;13;0",
-													"left": 6,
+													"left": -10,
 													"top": 444,
 													"width": 53.47265625,
 													"height": 13,
@@ -11099,11 +11099,11 @@
 														"$ref": "AAAAAAF9xR0deI6G0u4="
 													},
 													"font": "Arial;13;1",
-													"left": 477,
+													"left": 469,
 													"top": 824,
 													"width": 200.53515625,
 													"height": 13,
-													"text": "exam user scorecard"
+													"text": "exam-user-scorecard"
 												},
 												{
 													"_type": "LabelView",
@@ -11113,7 +11113,7 @@
 													},
 													"visible": false,
 													"font": "Arial;13;0",
-													"left": 6,
+													"left": -10,
 													"top": 444,
 													"width": 124.97900390625,
 													"height": 13,
@@ -11127,14 +11127,14 @@
 													},
 													"visible": false,
 													"font": "Arial;13;0",
-													"left": 6,
+													"left": -10,
 													"top": 444,
 													"height": 13,
 													"horizontalAlignment": 1
 												}
 											],
 											"font": "Arial;13;0",
-											"left": 472,
+											"left": 464,
 											"top": 817,
 											"width": 210.53515625,
 											"height": 25,
@@ -11171,7 +11171,7 @@
 														"$ref": "AAAAAAF9xR08Qo6s2a4="
 													},
 													"font": "Arial;13;0",
-													"left": 477,
+													"left": 469,
 													"top": 847,
 													"width": 200.53515625,
 													"height": 13,
@@ -11180,7 +11180,7 @@
 												}
 											],
 											"font": "Arial;13;0",
-											"left": 472,
+											"left": 464,
 											"top": 842,
 											"width": 210.53515625,
 											"height": 23
@@ -11196,7 +11196,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 3,
+											"left": -5,
 											"top": 222,
 											"width": 10,
 											"height": 10
@@ -11212,7 +11212,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 3,
+											"left": -5,
 											"top": 222,
 											"width": 10,
 											"height": 10
@@ -11228,7 +11228,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 3,
+											"left": -5,
 											"top": 222,
 											"width": 10,
 											"height": 10
@@ -11236,7 +11236,7 @@
 									],
 									"font": "Arial;13;0",
 									"containerChangeable": true,
-									"left": 472,
+									"left": 464,
 									"top": 768,
 									"width": 210.53515625,
 									"height": 98,
@@ -11303,7 +11303,7 @@
 													"top": 856,
 													"width": 235.93603515625,
 													"height": 13,
-													"text": "exam user scorecard score"
+													"text": "exam-user-scorecard-score"
 												},
 												{
 													"_type": "LabelView",
@@ -12575,7 +12575,7 @@
 													"top": 743,
 													"width": 205.61962890625,
 													"height": 13,
-													"text": "+/questions/{question}/upanswerset",
+													"text": "~/questions/{question}/upanswerset",
 													"horizontalAlignment": 0
 												}
 											],
@@ -12896,7 +12896,7 @@
 										"$ref": "AAAAAAF9xRovjo2wQRU="
 									},
 									"lineStyle": 1,
-									"points": "839:689;678:767"
+									"points": "839:688;672:767"
 								},
 								{
 									"_type": "UMLNoteLinkView",
@@ -13120,7 +13120,7 @@
 										"$ref": "AAAAAAF9xR0deI6F7D8="
 									},
 									"lineStyle": 1,
-									"points": "683:826;791:836"
+									"points": "675:826;791:837"
 								}
 							]
 						},
@@ -13269,7 +13269,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF9wsX3uQ0kV7E="
 							},
-							"name": "user exam",
+							"name": "user-exam",
 							"attributes": [
 								{
 									"_type": "UMLAttribute",
@@ -13289,7 +13289,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF9wsX3uQ0kV7E="
 							},
-							"name": "user exam take",
+							"name": "user-exam-take",
 							"attributes": [
 								{
 									"_type": "UMLAttribute",
@@ -13389,7 +13389,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF9wsX3uQ0kV7E="
 							},
-							"name": "upexam users",
+							"name": "upexam-users",
 							"attributes": [
 								{
 									"_type": "UMLAttribute",
@@ -13409,7 +13409,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF9wsX3uQ0kV7E="
 							},
-							"name": "upexam questions",
+							"name": "upexam-questions",
 							"attributes": [
 								{
 									"_type": "UMLAttribute",
@@ -13429,7 +13429,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF9wsX3uQ0kV7E="
 							},
-							"name": "exam user scorecard",
+							"name": "exam-user-scorecard",
 							"attributes": [
 								{
 									"_type": "UMLAttribute",
@@ -13449,7 +13449,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF9wsX3uQ0kV7E="
 							},
-							"name": "exam user scorecard score",
+							"name": "exam-user-scorecard-score",
 							"attributes": [
 								{
 									"_type": "UMLAttribute",
@@ -13578,6 +13578,7 @@
 										"$ref": "AAAAAAF9xSANMo71md0="
 									},
 									"name": "/questions/{question}/upanswerset",
+									"visibility": "package",
 									"type": ""
 								}
 							]
