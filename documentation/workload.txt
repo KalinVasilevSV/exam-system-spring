@@ -18,3 +18,12 @@ upanswerset(done)
 exams(done)
 
 Files require correction and style addition.
+
+==Pending:==
+Controllers:
+UsersController
+ExamsController
+QuestionsController
+
+Services:
+~
