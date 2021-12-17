@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Answer Set</title>
+</head>
+<body>
+<h1>Update Answer Set</h1>
+<p>Update the answer set for a question.</p>
+
+
+<div>
+    <fieldset>
+        <legend>Question text:</legend>
+        <p>What is the question? This is a test question(no DB)</p>
+    </fieldset>
+    <fieldset>
+        <legend>Answer set:</legend>
+        <p>A: answer A</p>
+        <p>B: answer B</p>
+        <p>C: answer C</p>
+        <p>or EMPTY if question is OPEN type.<p/>
+    </fieldset>
+    <form>
+        <fieldset>
+            <legend>New answer set:</legend>
+            <label for="A">Option A:</label>
+            <input type="text" id="A" name="A" value="old option A"><br>
+            <label for="B">Option B:</label>
+            <input type="text" id="B" name="B" value="old option B"><br>
+            <label for="C">Option C:</label>
+            <input type="text" id="C" name="C" value="old option C"><br>
+        </fieldset>
+        <fieldset>
+            <legend>Correct Answer:</legend>
+            <label for="answer A">A</label>
+            <input type="radio" id="answer A" name="correct_answer">
+            <label for="answer B">B</label>
+            <input type="radio" id="answer B" name="correct_answer">
+            <label for="answer C">C</label>
+            <input type="radio" id="answer C" name="correct_answer">
+        </fieldset>
+        <input type="submit" value="Update">
+    </form>
+    <button>Cancel</button>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Question</title>
+</head>
+<body>
+<h1>Update Question</h1>
+<button>Cancel</button>
+
+<div>
+    <fieldset>
+        <legend>Question text:</legend>
+        <p>What is the question? This is a test question(no DB)</p>
+    </fieldset>
+    <fieldset>
+        <legend>Answer set:</legend>
+        <p>A: answer A</p>
+        <p>B: answer B</p>
+        <p>C: answer C</p>
+        <p>or EMPTY if question is OPEN type.<p/>
+    </fieldset>
+    <fieldset>
+        <legend>New question text:</legend>
+        <form>
+            <label for="question">Question:</label>
+            <input type="text" id="question" name="question" value="old question text"><br>
+            <input type="submit" value="Update">
+        </form>
+    </fieldset>
+    <button>Cancel</button>
+</div>
+
+</body>
+</html>

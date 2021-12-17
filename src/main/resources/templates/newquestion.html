@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Question</title>
+</head>
+<body>
+<h1>New Question</h1>
+<button>Back</button>
+<p>Create a new question to add to exams.</p>
+<form action="/newquestion" method="post">
+    <fieldset>
+        <legend>Question:</legend>
+    <label for="question">Question text:</label>
+    <input type="text" id="question" name="question"><br>
+    </fieldset>
+    <fieldset>
+        <legend>Answer set:</legend>
+    <label for="A">Option A:</label>
+    <input type="text" id="A" name="A"><br>
+    <label for="B">Option B:</label>
+    <input type="text" id="B" name="B"><br>
+    <label for="C">Option C:</label>
+    <input type="text" id="C" name="C"><br>
+    </fieldset>
+    <fieldset>
+        <legend>Correct Answer:</legend>
+    <label for="answer A">A</label>
+    <input type="radio" id="answer A" name="correct_answer">
+    <label for="answer B">B</label>
+    <input type="radio" id="answer B" name="correct_answer">
+    <label for="answer C">C</label>
+    <input type="radio" id="answer C" name="correct_answer">
+    </fieldset>
+    <input type="submit" value="Create">
+</form>
+<button>Cancel</button>
+</body>
+</html>

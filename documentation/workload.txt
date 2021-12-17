@@ -1,10 +1,20 @@
 WORKLOAD
 
-Tano
-Georgi:
-index
-users
+~Tano~~~~~~~~~~~~~~~~~~~
 
-Kalin:
-questions
-exams
+~Georgi~~~~~~~~~~~~~~~~~~
+html templates:
+index(done)
+users(done)
+
+~Kalin~~~~~~~~~~~~~~~~~~~
+html templates:
+questions(done)
+questions(done)
+newquestion(done)
+upquestion(done)
+newanswerset(done)
+upanswerset(done)
+exams(done)
+
+Files require correction and style addition.
