@@ -2,6 +2,9 @@ WORKLOAD
 
 ~Tano~~~~~~~~~~~~~~~~~~~
 200 lines of not working code(done)
+fix login to work
+fix register to work
+
 
 ~Georgi~~~~~~~~~~~~~~~~~~
 html templates:
