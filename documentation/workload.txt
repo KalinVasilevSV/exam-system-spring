@@ -39,8 +39,7 @@ AnswerSetBinding
 ExamBinding
 QuestionBinding
 ScoreCardBinding
-UserRoleBinding
-UserBinding
+
 
 Views(VMs):
 AnswerSetView
@@ -51,4 +50,5 @@ UserRoleView
 UserView
 
 ==DONE:==
-
+UserRoleBinding(done)
+UserBinding(done)
