@@ -160,10 +160,9 @@
 #{exam} {user} {scorecard} ADMIN
 	elements:
 		- labels with scorecard details with "score"(1) button
-		- "save" button(2)
 		- "back" button(3)
 	links:
-		- {exam}(2)(3)
+		- {exam}(3)
 		- {exam}{user}{scorecard}score(1)
 
 #{exam} {user} {scorecard} score ADMIN

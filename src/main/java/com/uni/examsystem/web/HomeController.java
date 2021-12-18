@@ -8,6 +8,9 @@ public class HomeController {
 
     @GetMapping("/")
     public String index() {
-        return "index";
+        return "login";
     }
+
+    @GetMapping("/index-admin")
+    public  String indexAdmin(){return "index-admin";}
 }

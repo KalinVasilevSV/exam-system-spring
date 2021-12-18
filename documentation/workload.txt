@@ -30,4 +30,25 @@ ExamsController
 QuestionsController
 
 Services:
-~
+UserService
+ExamService
+QuestionService
+
+Bindings(DTOs):
+AnswerSetBinding
+ExamBinding
+QuestionBinding
+ScoreCardBinding
+UserRoleBinding
+UserBinding
+
+Views(VMs):
+AnswerSetView
+ExamView
+QuestionView
+ScoreCardView
+UserRoleView
+UserView
+
+==DONE:==
+
