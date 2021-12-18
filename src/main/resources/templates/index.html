@@ -19,6 +19,7 @@
 
 </head>
 <body>
+<header th:replace="/fragments/commons::navigation"></header>
 
 
 <div class="position-absolute top-50 start-50 translate-middle" sec:authorize="!isAuthenticated()">
@@ -29,9 +30,6 @@
     <h1>Logged in</h1>
 </div>
 
-<form th:action="@{/users/logout}" th:method="post">
-    <button class="btn btn-lg">Logout</button>
-</form>
 
 </body>
 </html>

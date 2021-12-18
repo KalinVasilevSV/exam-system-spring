@@ -2,8 +2,8 @@ WORKLOAD
 
 ~Tano~~~~~~~~~~~~~~~~~~~
 200 lines of not working code(done)
-fix login to work
-fix register to work
+fix login to work(done)
+fix register to work(done)
 
 
 ~Georgi~~~~~~~~~~~~~~~~~~

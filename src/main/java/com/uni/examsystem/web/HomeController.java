@@ -11,8 +11,4 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/index-admin")
-    public String indexAdmin() {
-        return "index-admin";
-    }
 }

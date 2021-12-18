@@ -28,7 +28,7 @@ public class RegisterController {
 
     @GetMapping("/users/register")
     public String registerUserGet() {
-        return "user-register";
+        return "register";
     }
 
     @PostMapping("/users/register")
