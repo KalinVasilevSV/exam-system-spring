@@ -24,43 +24,53 @@
 </head>
 <body>
 
-<div class="position-absolute top-50 start-50 translate-middle">
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+                <div class="card shadow-2-strong card-registration" id="form-section">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 text-center">Create Account</h3>
+                        <form class="row g-3" th:action="@{/users/register}"
+                              th:method="post"
+                              th:object="${userModel}">
 
-    <form class="row g-3" th:action="@{/users/register}"
-          th:method="post"
-          th:object="${userModel}">
+                            <div class="col-md-6">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="firstName" th:field="*{firstName}">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" th:field="*{lastName}">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="username" th:field="*{username}">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="facNumber" class="form-label">Faculty Number</label>
+                                <input type="text" class="form-control" id="facNumber" th:field="*{facultyNum}">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" th:field="*{password}">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" id="confirmPassword"
+                                       th:field="*{confirmPassword}">
+                            </div>
 
-        <div class="col-md-6">
-            <label for="firstName" class="form-label">First Name</label>
-            <input type="text" class="form-control" id="firstName" th:field="*{firstName}">
+                            <div class="col-12">
+                                <input type="submit" class="btn btn-primary" value="Register"/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-6">
-            <label for="lastName" class="form-label">Last Name</label>
-            <input type="text" class="form-control" id="lastName" th:field="*{lastName}">
-        </div>
-        <div class="col-md-6">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" id="username" th:field="*{username}">
-        </div>
-        <div class="col-md-6">
-            <label for="facNumber" class="form-label">Faculty Number</label>
-            <input type="text" class="form-control" id="facNumber" th:field="*{facultyNum}">
-        </div>
-        <div class="col-md-6">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" th:field="*{password}">
-        </div>
-        <div class="col-md-6">
-            <label for="confirmPassword" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control" id="confirmPassword" th:field="*{confirmPassword}">
-        </div>
-
-        <div class="col-12">
-            <input type="submit" class="btn btn-primary" value="Register"/>
-        </div>
-    </form>
-</div>
-
+    </div>
+</section>
 
 </body>
 </html>
