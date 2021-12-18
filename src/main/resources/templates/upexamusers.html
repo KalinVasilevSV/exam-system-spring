@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+            crossorigin="anonymous"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+    <link
+            href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css"/>
+    <title>Admin (d)number</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
+    <div class="container">
+        <a href="#" class="navbar-brand">Admin ( number)</a>
+
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navmenu"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto">
+                li class="nav-item">
+                <a href="#users" class="nav-link">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#exams" class="nav-link">Exams</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#questions" class="nav-link">Questions</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<section
+        class="bg-dark text-light p-5 p-lg-1 pt-lg-5 text-center text-sm-start"
+>
+    <div class="container">
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <div>
+                <br>
+                <h1>Create new <span class="text-warning"> exam here </span></h1>
+                <p class="lead my-4">
+                    Some random text bla bla
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<form>
+    <div align="center" class="form-group">
+        <label for="exampleFormControlTextarea1">Exam details</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+    </div>
+
+
+
+</form>
+<br>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">StudentID</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>231231</td>
+    </tr>
+    <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>12312312</td>
+    </tr>
+    <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>2131231</td>
+    </tr>
+    </tbody>
+
+</table>
+<div align="center">
+    <button type="button" class="btn btn-primary">View</button>
+    <button type="button" class="btn btn-primary">Remove</button>
+</div>
+<br>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Question</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">1</th>
+        <td>HOw are you</td>
+
+    </tr>
+    <tr>
+        <th scope="row">2</th>
+        <td>How old are you</td>
+
+    </tr>
+    <tr>
+        <th scope="row">3</th>
+        <td>What is "marshrutizator"</td>
+
+    </tr>
+    </tbody>
+</table>
+<div align="center">
+    <button type="button" class="btn btn-primary">Add to exam</button>
+
+</div>
+<br>
+<div align="center">
+    <button type="button" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-primary">Back</button>
+</div>
+
+
+
+
+</body>
+</html>
