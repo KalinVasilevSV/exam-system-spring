@@ -1,7 +1,7 @@
 WORKLOAD
 
 ~Tano~~~~~~~~~~~~~~~~~~~
--connect init exam to a existing user
+-connect init exam to an existing user
 -implement post logic to the controllers
 -add thymeleaf logic to html files
 
