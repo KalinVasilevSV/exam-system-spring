@@ -21,9 +21,9 @@ public class QuestionServiceImpl implements QuestionService {
 
     private final ModelMapper modelMapper;
 
-    public QuestionServiceImpl(QuestionRepository questionRepository, AnswerSetRepository answerSetRepository,ModelMapper modelMapper) {
+    public QuestionServiceImpl(QuestionRepository questionRepository, AnswerSetRepository answerSetRepository, ModelMapper modelMapper) {
         this.questionRepository = questionRepository;
-        this.answerSetRepository=answerSetRepository;
+        this.answerSetRepository = answerSetRepository;
         this.modelMapper = modelMapper;
     }
 
@@ -37,12 +37,12 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public void initializeQuestions() {
-        if(questionRepository.count()==0){
-            QuestionEntity question1= new QuestionEntity();
+        if (questionRepository.count() == 0) {
+            QuestionEntity question1 = new QuestionEntity();
             question1.setQuestion("Two six sided dice are thrown together. What is the probability that a total of 10 is thrown?");
             question1.setqType(QuestionTypeEnum.CLOSED);
             question1.setScore(3.0F);
-            AnswerSetEntity answerSet1=new AnswerSetEntity();
+            AnswerSetEntity answerSet1 = new AnswerSetEntity();
             answerSet1.setA("1/6");
             answerSet1.setB("1/12");
             answerSet1.setC("1/2");
@@ -51,7 +51,7 @@ public class QuestionServiceImpl implements QuestionService {
             answerSetRepository.save(answerSet1);
             questionRepository.save(question1);
 
-            QuestionEntity question2=new QuestionEntity();
+            QuestionEntity question2 = new QuestionEntity();
             question2.setQuestion("What is the speed in m/s of a car that travels 30km in 20 minutes?");
             question2.setqType(QuestionTypeEnum.OPEN);
             question2.setScore(10.0F);
