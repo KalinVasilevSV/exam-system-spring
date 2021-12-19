@@ -3,6 +3,8 @@ package com.uni.examsystem.service;
 import com.uni.examsystem.models.binding.UserRegisterBindingModel;
 import com.uni.examsystem.models.view.UserDetailsView;
 
+import java.util.Optional;
+
 public interface UserService {
 
     void initializeUsersAndRoles();
@@ -13,7 +15,8 @@ public interface UserService {
 
     void registerAndLoginUser(UserRegisterBindingModel userModel);
 
-    UserDetailsView findById(Long id, String currentUser);
 
     boolean canEdit(String username, Long id);
+
+    Optional<UserDetailsView> findByUserName(String username);
 }

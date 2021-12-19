@@ -32,8 +32,7 @@
                 <ul class="navbar-nav">
                     <!--                    nav bar if authenticated-->
                     <li sec:authorize="isAuthenticated()">
-                        <!--                        NOT WORKING-->
-                        <a class="nav-link" th:href="@{/users/{id}(id = ${@currentUser.id})/details}">Profile</a>
+                        <a class="nav-link" th:href="@{/users/details}">Profile</a>
                     </li>
                     <li sec:authorize="isAuthenticated()">
                         <a class="nav-link" href="#">Something 2</a>

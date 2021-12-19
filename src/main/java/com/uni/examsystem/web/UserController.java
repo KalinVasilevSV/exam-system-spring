@@ -45,11 +45,12 @@ public class UserController {
 
     }
 
-    @GetMapping("/{id}/details")
-    public String userDetails(@PathVariable Long id, Model model, Principal principal) {
+    @GetMapping("/details")
+    public String userDetails(Model model, Principal principal) {
 
-        model.addAttribute("user", userService.findById(id, principal.getName()));
-        return "";
+
+        model.addAttribute("user", userService.findByUserName(principal.getName()).get());
+        return "test";
     }
 
     @GetMapping("/{userId}/{examId}/take")
