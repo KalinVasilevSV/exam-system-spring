@@ -1,53 +1,28 @@
 WORKLOAD
 
 ~Tano~~~~~~~~~~~~~~~~~~~
-make all controllers (currently working)
-add plain exam and questions
-fix view and connect them to backend
+-add init exam and questions then connect them to a user
+-implement post logic to the controllers
+-add thymeleaf logic to html files
 
 
 ~Georgi~~~~~~~~~~~~~~~~~~
-add edit-user.html
-add user-details.htmlok
-add exam-details-for-admin.html
+-add edit-user.html
+-add user-details.htmlok
+-add exam-details-for-admin.html
 
 ~Kalin~~~~~~~~~~~~~~~~~~~
-find questions and answers
+-find questions and answers
 
 ==Pending:==
-Controllers:
-UsersController
-ExamsController
-QuestionsController
 
-Services:
-UserService (created) - requires review
-ExamService (created) - requires additional functionality
-QuestionService - may be included in ExamService ?
-
-Bindings(DTOs):
-none
-
-Validators:
-UniqueExamNameValidator
-
-Views(VMs):
-UserRoleView ? - do we need this ?
 
 Front:
-Pages require linking to back-end
-Pages require styling
+-Pages require linking to back-end
+-Pages require styling
 
-==DONE:==
-UserRoleBinding (done)
-UserRegisterBindingModel (done)
-AnswerSetBindingModel (done) - requires review
-QuestionBindingModel (done) - requires review
-ExamBindingModel (done) - requires review
-ScoreCardBindingModel (done) - requires review
 
-UserView (done) - requires review
-QuestionView (done) - requires review
-AnswerSetView (done) - requires review
-ExamView (done) - requires review
-ScoreCardView (done) - requires review
+Back:
+-logic for the whole exams (adding, editing, deleting)
+-logic for the questions (adding, editing, deleting)
+-logic for letting students access a specific exam
