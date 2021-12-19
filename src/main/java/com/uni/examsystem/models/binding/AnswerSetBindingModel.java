@@ -3,10 +3,7 @@ package com.uni.examsystem.models.binding;
 import com.uni.examsystem.models.entities.QuestionEntity;
 import com.uni.examsystem.models.entities.enums.AnswerEnum;
 
-import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -22,6 +19,7 @@ public class AnswerSetBindingModel {
     private AnswerEnum answer;
     //may require re-typing
     @NotNull
+    @OneToMany
     private QuestionEntity question;
 
     public String getA() {return a;}

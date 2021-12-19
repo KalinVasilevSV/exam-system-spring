@@ -1,28 +1,25 @@
->login (url: ~/login) ADMIN/USER
+>login (url: ~/users/login) ADMIN/USER
 	>index (url: ~/index) ADMIN/USER
 |
-	>users (url: ~/users) ADMIN
-|	----newuser (url: ~/users/newuser) ADMIN
-|	----user(url: ~/users/{user}) ADMIN/USER
-|	--------upuser (url: ~/users/{user}/upuser) ADMIN/USER
-|	--------user exam (url: ~/users/{user}/{exam}) ADMIN/USER
-|	------------user exam take (url: ~/users/{user}/{exam}/take) USER
-|				
-	>exams (url: ~/exams) ADMIN
-|	----newexam (url: ~/exams/newexam) ADMIN
-|	----exam (url: ~/exams/{exam}) ADMIN
-|	--------upexam (url: ~/exams/{exam}/upexam) ADMIN
-|	--------upexam users(url: ~/exams/{exam}/upexam/users) ADMIN
-|	--------upexam questions(url: ~/exams/{exam}/upexam/questions) ADMIN
-|	--------exam user scorecard (url: ~/exams/{exam}/{user}/{scorecard}) ADMIN
-|	--------exam user scorecard score (url: ~/exams/{exam}/{user}/{scorecard}/score) ADMIN
-|				
-	>questions (url: ~/questions) ADMIN
-|	----newquestion (url: ~/questions/newquestion) ADMIN
-|	----question (url: ~/questions/{question}) ADMIN
-|	--------upquestion (url: ~/questions/{question}/upquestion) ADMIN
-|	--------newanswerset(url: ~/questions/{question}/newanswerset) ADMIN
-|	--------upanswerset(url: ~/questions/{question}/upanswerset) ADMIN
+    ---------------------USERS-----------------------------------
+	>users (url: ~/users/panel) ADMIN (users-panel.html)
+|	----newuser (url: ~/users/register) ADMIN (register.html)
+|	----user(url: ~/users/{user}/details) ADMIN/USER (missing.html)
+|	--------upuser (url: ~/users/{user}/edit) ADMIN/USER (missing.html)
+|	------------user exam take (url: ~/users/{user}/{exam}/take) USER (take-exam-student.html)
+
+    ---------------------EXAMS-----------------------------------
+	>exams (url: ~/exams/all-exams) ADMIN (all-exams-admin.html)
+|	----add-exam (url: ~/exams/add-exam) ADMIN (add-exam.html)
+|	----exam (url: ~/exams/{exam}) ADMIN (simple info for the exam) (missing.html)
+|	--------edit-exam (url: ~/exams/{exam}/edit-exam) ADMIN (edit-exam.html)
+|	--------exam user scorecard score (url: ~/exams/{exam}/{user}/{scorecard}/score) ADMIN (exam-user-scorecard-score.html)
+
+	---------------------QUESTIONS-----------------------------------
+	>questions
+|	----add-question (url: ~/questions/add-question) ADMIN (add-question.html)
+|	----question-details (url: ~/questions/{question}/details) ADMIN (question-details.html)
+|	--------edit-question (url: ~/questions/{question}/edit-question) ADMIN (edit-question.html)
 
 #index ADMIN/USER
 	elements:
