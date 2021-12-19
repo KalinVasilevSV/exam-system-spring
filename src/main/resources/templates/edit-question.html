@@ -17,14 +17,33 @@
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-<h1>Update Question</h1>
-<button>Cancel</button>
+<header th:replace="/fragments/commons::navigation"></header>
+
+<section class="bg-dark text-light p-5 p-lg-1 pt-lg-5 text-center text-sm-start">
+    <div class="container">
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <div>
+                <br>
+                <h1>Edit <span class="text-warning"> question </span></h1>
+                <p class="lead my-4">
+                    Edit a question's text and answer details
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<button class="btn btn-primary">Cancel</button>
+
+<section class=" text-dark p-5 p-lg-1 pt-lg-5 text-center text-sm-start">
 
 <div>
-    <fieldset>
-        <legend>Question text:</legend>
-        <p>What is the question? This is a test question(no DB)</p>
-    </fieldset>
+    <form>
+        <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="question-text">Question text:</label>
+            <input type="text" id="question-text" class="form-control" th:value="@{question}">
+        </div>
     <fieldset>
         <legend>Answer set:</legend>
         <p>A: answer A</p>
@@ -34,14 +53,14 @@
     </fieldset>
     <fieldset>
         <legend>New question text:</legend>
-        <form>
             <label for="question">Question:</label>
             <input type="text" id="question" name="question" value="old question text"><br>
             <input type="submit" value="Update">
-        </form>
     </fieldset>
+        </div>
+    </form>
     <button>Cancel</button>
 </div>
-
+</section>
 </body>
 </html>

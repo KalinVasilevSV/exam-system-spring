@@ -4,7 +4,7 @@
     ---------------------USERS-----------------------------------
 	>users (url: ~/users/panel) ADMIN (users-panel.html)
 |	----user(url: ~/users/{user}/details) ADMIN/USER (missing.html)
-|	--------upuser (url: ~/users/{user}/edit) ADMIN/USER (missing.html)
+|	--------edit-user (url: ~/users/{user}/edit) ADMIN/USER (edit-user.html)
 |	------------user exam take (url: ~/users/{user}/{exam}/take) USER (take-exam-student.html)
 
     ---------------------EXAMS-----------------------------------
