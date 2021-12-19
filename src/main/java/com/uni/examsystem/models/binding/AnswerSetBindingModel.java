@@ -17,7 +17,6 @@ public class AnswerSetBindingModel {
     @NotNull
     @Enumerated(EnumType.STRING)
     private AnswerEnum answer;
-    //may require re-typing
     @NotNull
     @OneToMany
     private QuestionEntity question;
