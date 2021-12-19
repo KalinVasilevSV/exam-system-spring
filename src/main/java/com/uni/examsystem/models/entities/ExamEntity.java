@@ -11,7 +11,7 @@ import java.util.Set;
 @Table(name = "EXAMS")
 public class ExamEntity extends BaseEntity {
     @Column(nullable = false)
-    private String name;
+    private String examName;
     @Column(nullable = false)
     private Duration timeGiven;
     @ManyToMany
@@ -19,12 +19,12 @@ public class ExamEntity extends BaseEntity {
     @ManyToMany
     private Set<UserEntity> users;
 
-    public String getName() {
-        return name;
+    public String getExamName() {
+        return examName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setExamName(String examName) {
+        this.examName = examName;
     }
 
     public Duration getTimeGiven() {

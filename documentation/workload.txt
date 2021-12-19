@@ -1,17 +1,19 @@
 WORKLOAD
 
 ~Tano~~~~~~~~~~~~~~~~~~~
-200 lines of not working code(done)
-fix login to work(done)
-fix register to work(done)
+fix register for admin only
+make all controllers
+add plain exam and questions
+fix view and connect them to backend
 
 
 ~Georgi~~~~~~~~~~~~~~~~~~
-html templates:
-index(done)
-users(done)
+add edit-user.html
+add user-details.html
+add exam-details-for-admin.html
 
 ~Kalin~~~~~~~~~~~~~~~~~~~
+find questions and answers
 
 ==Pending:==
 Controllers:
