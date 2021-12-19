@@ -6,13 +6,23 @@ import com.uni.examsystem.models.entities.UserRoleEntity;
 import java.util.HashSet;
 import java.util.Set;
 
-public class UserView {
+public class UserDetailsView {
+
     private String username;
     private String firstName;
     private String lastName;
     private String facNo;
     private Set<UserRoleEntity> roles = new HashSet<>();
     private Set<ExamEntity> exams;
+    private boolean canEdit;
+
+    public boolean isCanEdit() {
+        return canEdit;
+    }
+
+    public void setCanEdit(boolean canEdit) {
+        this.canEdit = canEdit;
+    }
 
     public String getUsername() {return username;}
 

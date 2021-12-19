@@ -1,8 +1,7 @@
 WORKLOAD
 
 ~Tano~~~~~~~~~~~~~~~~~~~
-fix register for admin only
-make all controllers
+make all controllers (currently working)
 add plain exam and questions
 fix view and connect them to backend
 

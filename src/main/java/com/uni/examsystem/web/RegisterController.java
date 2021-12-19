@@ -7,11 +7,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
 @Controller
+@RequestMapping("/users")
 public class RegisterController {
 
     private final UserService userService;
@@ -26,12 +28,12 @@ public class RegisterController {
     }
 
 
-    @GetMapping("/users/register")
+    @GetMapping("/register")
     public String registerUserGet() {
         return "register";
     }
 
-    @PostMapping("/users/register")
+    @PostMapping("/register")
     public String registerUserPost(
             @Valid UserRegisterBindingModel userModel,
             BindingResult bindingResult,

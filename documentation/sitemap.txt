@@ -3,23 +3,22 @@
 |
     ---------------------USERS-----------------------------------
 	>users (url: ~/users/panel) ADMIN (users-panel.html)
-|	----newuser (url: ~/users/register) ADMIN (register.html)
 |	----user(url: ~/users/{user}/details) ADMIN/USER (missing.html)
 |	--------upuser (url: ~/users/{user}/edit) ADMIN/USER (missing.html)
 |	------------user exam take (url: ~/users/{user}/{exam}/take) USER (take-exam-student.html)
 
     ---------------------EXAMS-----------------------------------
-	>exams (url: ~/exams/all-exams) ADMIN (all-exams-admin.html)
-|	----add-exam (url: ~/exams/add-exam) ADMIN (add-exam.html)
-|	----exam (url: ~/exams/{exam}) ADMIN (simple info for the exam) (missing.html)
-|	--------edit-exam (url: ~/exams/{exam}/edit-exam) ADMIN (edit-exam.html)
+	>exams (url: ~/exams/all) ADMIN (all-exams-admin.html)
+|	----add-exam (url: ~/exams/add) ADMIN (add-exam.html)
+|	----exam (url: ~/exams/{exam}/details) ADMIN (simple info for the exam) (missing.html)
+|	--------edit-exam (url: ~/exams/{exam}/edit) ADMIN (edit-exam.html)
 |	--------exam user scorecard score (url: ~/exams/{exam}/{user}/{scorecard}/score) ADMIN (exam-user-scorecard-score.html)
 
 	---------------------QUESTIONS-----------------------------------
 	>questions
-|	----add-question (url: ~/questions/add-question) ADMIN (add-question.html)
+|	----add-question (url: ~/questions/add) ADMIN (add-question.html)
 |	----question-details (url: ~/questions/{question}/details) ADMIN (question-details.html)
-|	--------edit-question (url: ~/questions/{question}/edit-question) ADMIN (edit-question.html)
+|	--------edit-question (url: ~/questions/{question}/edit) ADMIN (edit-question.html)
 
 #index ADMIN/USER
 	elements:
