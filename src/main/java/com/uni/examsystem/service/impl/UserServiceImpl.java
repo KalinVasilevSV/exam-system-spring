@@ -80,12 +80,6 @@ public class UserServiceImpl implements UserService {
         SecurityContextHolder.getContext().setAuthentication(authentication);
     }
 
-    @Override
-    public UserDetailsView findById(Long id, String currentUser) {
-        return userRepository.findById(id)
-                .map(userEntity -> mapUserDetailsView(currentUser, userEntity)).get();
-
-    }
 
     @Override
     public boolean canEdit(String username, Long id) {
@@ -99,6 +93,23 @@ public class UserServiceImpl implements UserService {
             return isAdmin(caller.get()) || userEntity.getUsername().equals(username);
         }
 
+    }
+
+    @Override
+    public Optional<UserDetailsView> findByUserName(String username) {
+        return userRepository.findByUsername(username)
+                .map(userEntity -> {
+                    var user = new UserDetailsView();
+                    user.setId(userEntity.getId());
+                    user.setFirstName(userEntity.getFirstName());
+                    user.setLastName(userEntity.getLastName());
+                    user.setUsername(userEntity.getUsername());
+                    user.setFacNo(userEntity.getFacNo());
+                    user.setRoles(userEntity.getRoles());
+                    user.setExams(userEntity.getExams());
+                    user.setCanEdit(true);
+                    return user;
+                });
     }
 
     private boolean isAdmin(UserEntity user) {

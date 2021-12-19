@@ -8,6 +8,7 @@ import java.util.Set;
 
 public class UserDetailsView {
 
+    private Long id;
     private String username;
     private String firstName;
     private String lastName;
@@ -15,6 +16,15 @@ public class UserDetailsView {
     private Set<UserRoleEntity> roles = new HashSet<>();
     private Set<ExamEntity> exams;
     private boolean canEdit;
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public boolean isCanEdit() {
         return canEdit;
@@ -24,28 +34,52 @@ public class UserDetailsView {
         this.canEdit = canEdit;
     }
 
-    public String getUsername() {return username;}
+    public String getUsername() {
+        return username;
+    }
 
-    public void setUsername(String username) {this.username = username;}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-    public String getFirstName() {return firstName;}
+    public String getFirstName() {
+        return firstName;
+    }
 
-    public void setFirstName(String firstName) {this.firstName = firstName;}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-    public String getLastName() {return lastName;}
+    public String getLastName() {
+        return lastName;
+    }
 
-    public void setLastName(String lastName) {this.lastName = lastName;}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-    public String getFacNo() {return facNo;}
+    public String getFacNo() {
+        return facNo;
+    }
 
-    public void setFacNo(String facNo) {this.facNo = facNo;}
+    public void setFacNo(String facNo) {
+        this.facNo = facNo;
+    }
 
-    public Set<UserRoleEntity> getRoles() {return roles;}
+    public Set<UserRoleEntity> getRoles() {
+        return roles;
+    }
 
-    public void setRoles(Set<UserRoleEntity> roles) {this.roles = roles;}
+    public void setRoles(Set<UserRoleEntity> roles) {
+        this.roles = roles;
+    }
 
-    public Set<ExamEntity> getExams() {return exams;}
+    public Set<ExamEntity> getExams() {
+        return exams;
+    }
 
-    public void setExams(Set<ExamEntity> exams) {this.exams = exams;}
+    public void setExams(Set<ExamEntity> exams) {
+        this.exams = exams;
+    }
 
 }
