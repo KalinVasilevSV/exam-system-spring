@@ -1,5 +1,6 @@
 package com.uni.examsystem.configuration;
 
+import com.uni.examsystem.models.entities.enums.UserRoleEnum;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -28,6 +29,17 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                 .antMatchers("/", "/users/login", "/users/register").permitAll()
+                .antMatchers("/stats",
+                        "/users/panel",
+                        "/exams/all",
+                        "/exams/{id}/edit",
+                        "/exams/{examId}/{userId}/{scorecardId}/score",
+                        "/exams/add",
+                        "/questions/add",
+                        "/questions/{id}/details",
+                        "/questions/edit").hasRole(UserRoleEnum.ADMIN.name())
+                .antMatchers("/users/{userId}/{examId}/take").hasRole(UserRoleEnum.USER.name())
+
                 .antMatchers("/**").authenticated()
                 .and()
                 .formLogin()

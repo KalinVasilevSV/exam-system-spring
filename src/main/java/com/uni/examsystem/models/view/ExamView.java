@@ -14,6 +14,9 @@ public class ExamView {
     private Set<QuestionEntity> questions;
     private Set<UserEntity> users;
 
+    public ExamView() {
+    }
+
     public String getName() {return name;}
 
     public void setName(String name) {this.name = name;}

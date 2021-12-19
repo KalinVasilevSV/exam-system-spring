@@ -4,9 +4,11 @@ import com.uni.examsystem.models.binding.UserRegisterBindingModel;
 import com.uni.examsystem.models.entities.UserEntity;
 import com.uni.examsystem.models.entities.UserRoleEntity;
 import com.uni.examsystem.models.entities.enums.UserRoleEnum;
+import com.uni.examsystem.models.view.UserDetailsView;
 import com.uni.examsystem.repositories.UserRepository;
 import com.uni.examsystem.repositories.UserRoleRepository;
 import com.uni.examsystem.service.UserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -24,13 +27,15 @@ public class UserServiceImpl implements UserService {
     private final UserRoleRepository userRoleRepository;
     private final PasswordEncoder passwordEncoder;
     private final AppUserServiceImpl appUserService;
+    private final ModelMapper modelMapper;
 
 
-    public UserServiceImpl(UserRepository userRepository, UserRoleRepository userRoleRepository, PasswordEncoder passwordEncoder, AppUserServiceImpl appUserService) {
+    public UserServiceImpl(UserRepository userRepository, UserRoleRepository userRoleRepository, PasswordEncoder passwordEncoder, AppUserServiceImpl appUserService, ModelMapper modelMapper) {
         this.userRepository = userRepository;
         this.userRoleRepository = userRoleRepository;
         this.passwordEncoder = passwordEncoder;
         this.appUserService = appUserService;
+        this.modelMapper = modelMapper;
     }
 
 
@@ -73,6 +78,39 @@ public class UserServiceImpl implements UserService {
         );
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
+    }
+
+    @Override
+    public UserDetailsView findById(Long id, String currentUser) {
+        return userRepository.findById(id)
+                .map(userEntity -> mapUserDetailsView(currentUser, userEntity)).get();
+
+    }
+
+    @Override
+    public boolean canEdit(String username, Long id) {
+        Optional<UserEntity> userOpt = userRepository.findById(id);
+        Optional<UserEntity> caller = userRepository.findByUsername(username);
+
+        if (userOpt.isEmpty() || caller.isEmpty()) {
+            return false;
+        } else {
+            var userEntity = userOpt.get();
+            return isAdmin(caller.get()) || userEntity.getUsername().equals(username);
+        }
+
+    }
+
+    private boolean isAdmin(UserEntity user) {
+        return user.getRoles()
+                .stream().map(UserRoleEntity::getRole).anyMatch(r -> r == UserRoleEnum.ADMIN);
+    }
+
+    private UserDetailsView mapUserDetailsView(String currentUser, UserEntity userEntity) {
+
+        var userDetailsView = modelMapper.map(userEntity, UserDetailsView.class);
+        userDetailsView.setCanEdit(canEdit(currentUser, userEntity.getId()));
+        return userDetailsView;
     }
 
 

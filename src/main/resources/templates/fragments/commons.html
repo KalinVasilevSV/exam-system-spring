@@ -32,7 +32,8 @@
                 <ul class="navbar-nav">
                     <!--                    nav bar if authenticated-->
                     <li sec:authorize="isAuthenticated()">
-                        <a class="nav-link" href="#">Something 1</a>
+                        <!--                        NOT WORKING-->
+                        <a class="nav-link" th:href="@{/users/{id}(id = ${@currentUser.id})/details}">Profile</a>
                     </li>
                     <li sec:authorize="isAuthenticated()">
                         <a class="nav-link" href="#">Something 2</a>
@@ -48,9 +49,10 @@
                             Admin Panel
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Something 1</a></li>
-                            <li><a class="dropdown-item" href="#">Something 2</a></li>
-                            <li><a class="dropdown-item" href="#">Something 3</a></li>
+                            <li><a class="dropdown-item" th:href="@{/users/panel}">Users Panel</a></li>
+                            <li><a class="dropdown-item" th:href="@{/exams/all}">All Exams</a></li>
+                            <li><a class="dropdown-item" th:href="@{/exams/add}">Add Exam</a></li>
+                            <li><a class="dropdown-item" th:href="@{/questions/add}">Add Question</a></li>
                         </ul>
                     </li>
 
