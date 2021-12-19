@@ -17,23 +17,50 @@
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-<h1>Question</h1>
-<button>Back</button>
-<p>Question details.</p>
+<header th:replace="/fragments/commons::navigation"></header>
 
-<div>
-<fieldset>
-    <legend>Question text:</legend>
-    <p>What is the question? This is a test question(no DB)</p>
-    <button>Update</button>
-</fieldset>
-    <fieldset>
-        <legend>Answer set:</legend>
-        <p>A: answer A</p>
-        <p>B: answer B</p>
-        <p>C: answer C</p>
-        <button>New</button><button>Update</button><button>Delete</button>
-    </fieldset>
-</div>
+<section class="bg-dark text-light p-5 p-lg-1 pt-lg-5 text-center text-sm-start">
+    <div class="container">
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <div>
+                <br>
+                <h1>Question <span class="text-warning"> details </span></h1>
+                <p class="lead my-4">
+                    View question details.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class=" text-dark p-5 p-lg-1 pt-lg-5 text-center text-sm-start">
+    <button class="btn btn-primary">Back</button>
+    <div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Question text:</label>
+                    <p th:value="${question}.question"></p>
+                </div>
+                <div th:if="${question}.qType==0">
+                    <div class="form-group col-md-6">
+                        <label>Answer A:</label>
+                        <span th:value="${question}.a">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Answer B:</label>
+                        <span th:value="${question}.b">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label >Answer C:</label>
+                        <span th:value="${question}.c">
+                    </div>
+                </div>
+                <div th:if="${question}.qType==1">
+                    <p>Question is OPEN type.</p>
+                </div>
+                <button class="btn btn-primary">Edit</button>
+            </div>
+    </div>
+</section>
 </body>
 </html>
