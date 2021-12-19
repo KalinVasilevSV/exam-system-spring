@@ -1,0 +1,23 @@
+package com.uni.examsystem.models.binding;
+
+import org.hibernate.validator.constraints.time.DurationMin;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.time.Duration;
+
+public class ExamBindingModel {
+    @NotBlank
+    private String name;
+    @NotNull
+    @DurationMin(inclusive = true,minutes = 5)
+    private Duration timeGiven;
+
+    public String getName() {return name;}
+
+    public void setName(String name) {this.name = name;}
+
+    public Duration getTimeGiven() {return timeGiven;}
+
+    public void setTimeGiven(Duration timeGiven) {this.timeGiven = timeGiven;}
+}
