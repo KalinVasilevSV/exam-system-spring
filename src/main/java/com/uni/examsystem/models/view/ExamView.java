@@ -2,6 +2,7 @@ package com.uni.examsystem.models.view;
 
 import com.uni.examsystem.models.entities.QuestionEntity;
 import com.uni.examsystem.models.entities.UserEntity;
+import com.uni.examsystem.models.entities.enums.ExamStatusEnum;
 
 import java.time.Duration;
 import java.util.Set;
@@ -9,6 +10,7 @@ import java.util.Set;
 public class ExamView {
     private String name;
     private Duration timeGiven;
+    private ExamStatusEnum status;
     private Set<QuestionEntity> questions;
     private Set<UserEntity> users;
 

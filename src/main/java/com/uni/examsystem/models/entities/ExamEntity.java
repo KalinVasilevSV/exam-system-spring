@@ -1,9 +1,8 @@
 package com.uni.examsystem.models.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import com.uni.examsystem.models.entities.enums.ExamStatusEnum;
+
+import javax.persistence.*;
 import java.time.Duration;
 import java.util.Set;
 
@@ -14,6 +13,9 @@ public class ExamEntity extends BaseEntity {
     private String examName;
     @Column(nullable = false)
     private Duration timeGiven;
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private ExamStatusEnum status;
     @ManyToMany
     private Set<QuestionEntity> questions;
     @ManyToMany
@@ -34,6 +36,10 @@ public class ExamEntity extends BaseEntity {
     public void setTimeGiven(Duration timeGiven) {
         this.timeGiven = timeGiven;
     }
+
+    public ExamStatusEnum getStatus() {return status;}
+
+    public void setStatus(ExamStatusEnum status) {this.status = status;}
 
     public Set<QuestionEntity> getQuestions() {
         return questions;
