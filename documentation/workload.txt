@@ -20,9 +20,9 @@ ExamsController
 QuestionsController
 
 Services:
-UserService
-ExamService
-QuestionService
+UserService (created) - requires review
+ExamService (created) - requires additional functionality
+QuestionService - may be included in ExamService ?
 
 Bindings(DTOs):
 none
