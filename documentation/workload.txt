@@ -27,6 +27,9 @@ QuestionService
 Bindings(DTOs):
 none
 
+Validators:
+UniqueExamNameValidator
+
 Views(VMs):
 UserRoleView ? - do we need this ?
 

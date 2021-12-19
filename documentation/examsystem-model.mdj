@@ -7407,7 +7407,8 @@
 									},
 									"name": "Username",
 									"type": "VARCHAR",
-									"length": "16"
+									"length": "16",
+									"unique": true
 								},
 								{
 									"_type": "ERDColumn",
@@ -7437,7 +7438,8 @@
 									},
 									"name": "FacNo",
 									"type": "NUMERIC",
-									"length": "12"
+									"length": "12",
+									"unique": true
 								},
 								{
 									"_type": "ERDColumn",

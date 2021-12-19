@@ -1,5 +1,6 @@
 package com.uni.examsystem.models.binding;
 
+import com.uni.examsystem.models.validator.UniqueExamName;
 import org.hibernate.validator.constraints.time.DurationMin;
 
 import javax.validation.constraints.NotBlank;
@@ -8,6 +9,7 @@ import java.time.Duration;
 
 public class ExamBindingModel {
     @NotBlank
+    @UniqueExamName
     private String name;
     @NotNull
     @DurationMin(inclusive = true,minutes = 5)
