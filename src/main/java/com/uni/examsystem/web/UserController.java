@@ -30,7 +30,8 @@ public class UserController {
     }
 
     @GetMapping("/panel")
-    public String usersPanel() {
+    public String usersPanel(Model model) {
+        model.addAttribute("users", userService.getAllUsers());
         return "users-panel";
     }
 
