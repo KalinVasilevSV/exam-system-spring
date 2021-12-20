@@ -39,23 +39,23 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>Question text:</label>
-                    <p th:value="${question}.question"></p>
+                    <p th:text="${question.getQuestion()}"></p>
                 </div>
-                <div th:if="${question}.qType==0">
+                <div th:if="${question.getqType().ordinal()==0}">
                     <div class="form-group col-md-6">
                         <label>Answer A:</label>
-                        <span th:value="${question}.a"></span>
+                        <label th:text="${question.getAnswerSet().getA()}"></label>
                     </div>
                     <div class="form-group col-md-6">
                         <label>Answer B:</label>
-                        <span th:value="${question}.b"></span>
+                        <label th:text="${question.getAnswerSet().getB()}"></label>
                     </div>
                     <div class="form-group col-md-6">
                         <label >Answer C:</label>
-                        <span th:value="${question}.c"></span>
+                        <label th:text="${question.getAnswerSet().getC()}"></label>
                     </div>
                 </div>
-                <div th:if="${question}.qType==1">
+                <div th:if="${question.getqType().ordinal()==1}">
                     <p>Question is OPEN type.</p>
                 </div>
                 <button class="btn btn-primary">Edit</button>

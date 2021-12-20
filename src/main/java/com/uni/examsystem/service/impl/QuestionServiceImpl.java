@@ -8,10 +8,11 @@ import com.uni.examsystem.models.view.QuestionView;
 import com.uni.examsystem.repositories.AnswerSetRepository;
 import com.uni.examsystem.repositories.QuestionRepository;
 import com.uni.examsystem.service.QuestionService;
+import net.bytebuddy.dynamic.DynamicType;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class QuestionServiceImpl implements QuestionService {
@@ -34,6 +35,22 @@ public class QuestionServiceImpl implements QuestionService {
 
     }
 
+//    @Override
+//    public Optional<Set<QuestionView>> findAll() {
+//        return questionRepository.findAll();
+//
+//    }
+
+    @Override
+    public Optional<Set<QuestionView>> getAll() {
+        return questionRepository.getAll().map(questionEntities -> {
+            var questionViews = new HashSet<QuestionView>();
+            for (QuestionEntity questionEntity:questionEntities){
+                questionViews.add(new QuestionView(questionEntity));
+            }
+            return  questionViews;
+        });
+    }
 
     @Override
     public void initializeQuestions() {
