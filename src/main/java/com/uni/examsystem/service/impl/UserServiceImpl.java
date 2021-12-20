@@ -1,6 +1,7 @@
 package com.uni.examsystem.service.impl;
 
 import com.uni.examsystem.models.binding.UserRegisterBindingModel;
+import com.uni.examsystem.models.binding.UserUpdateBindingModel;
 import com.uni.examsystem.models.entities.UserEntity;
 import com.uni.examsystem.models.entities.UserRoleEntity;
 import com.uni.examsystem.models.entities.enums.UserRoleEnum;
@@ -105,8 +106,6 @@ public class UserServiceImpl implements UserService {
                     user.setLastName(userEntity.getLastName());
                     user.setUsername(userEntity.getUsername());
                     user.setFacNo(userEntity.getFacNo());
-                    user.setRoles(userEntity.getRoles());
-                    user.setExams(userEntity.getExams());
                     user.setCanEdit(true);
                     return user;
                 });
@@ -115,6 +114,30 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<UserEntity> findByFacNumber(String facNumber) {
         return userRepository.findByFacNoIgnoreCase(facNumber);
+    }
+
+    @Override
+    public void updateUser(UserUpdateBindingModel userModel) {
+        var userEntity = userRepository.findById(userModel.getId()).orElseThrow();
+
+        if (userModel.getCurrentPassword().equals(userEntity.getPassword())
+                && userModel.getPassword().equals(userModel.getConfirmPassword())) {
+            userEntity.setPassword(userModel.getPassword());
+
+        }
+
+        userEntity.setFirstName(userModel.getFirstName());
+        userEntity.setLastName(userModel.getLastName());
+        userRepository.save(userEntity);
+
+
+    }
+
+    @Override
+    public UserDetailsView findById(Long id) {
+
+        return userRepository.findById(id)
+                .map(userEntity -> modelMapper.map(userEntity, UserDetailsView.class)).orElseThrow();
     }
 
     private boolean isAdmin(UserEntity user) {

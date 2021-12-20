@@ -13,8 +13,6 @@ public class UserDetailsView {
     private String firstName;
     private String lastName;
     private String facNo;
-    private Set<UserRoleEntity> roles = new HashSet<>();
-    private Set<ExamEntity> exams;
     private boolean canEdit;
 
 
@@ -64,22 +62,6 @@ public class UserDetailsView {
 
     public void setFacNo(String facNo) {
         this.facNo = facNo;
-    }
-
-    public Set<UserRoleEntity> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<UserRoleEntity> roles) {
-        this.roles = roles;
-    }
-
-    public Set<ExamEntity> getExams() {
-        return exams;
-    }
-
-    public void setExams(Set<ExamEntity> exams) {
-        this.exams = exams;
     }
 
 }

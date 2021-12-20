@@ -34,15 +34,15 @@
 </section>
 
 <section class=" text-dark p-5 p-lg-1 pt-lg-5 text-center text-sm-start">
-    <form>
+    <form th:action="@{/users/{id}/edit(id=*{id})}" th:method="patch" th:object="${userModel}">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label>First name</label>
-                <input type="name" class="form-control"  placeholder="Name" th:value="${firstName}">
+                <input type="name" class="form-control" placeholder="Name" th:value="*{firstName}">
             </div>
             <div class="form-group col-md-6">
-                <label >Last Name</label>
-                <input class="form-control"  placeholder="Last name" th:value="${lastName}">
+                <label>Last Name</label>
+                <input class="form-control" placeholder="Last name" th:value="*{lastName}">
             </div>
             <div>
                 <br>
@@ -51,22 +51,21 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="old-password">Old password:</label>
-                <input class="form-control"  id="old-password" name="old-password" th:value="${password}">
+                <input class="form-control" id="old-password" name="old-password" th:value="*{currentPassword}">
             </div>
             <div class="form-group col-md-6">
                 <label for="new-password1">New password:</label>
-                <input class="form-control"  id="new-password1" name="new-password1" th:value="${new_password1}">
+                <input class="form-control" id="new-password1" name="new-password1" th:value="*{password}">
             </div>
             <div class="form-group col-md-6">
                 <label for="new-password2">Repeat new password:</label>
-                <input class="form-control"  id="new-password2" name="new-password1" th:value="${new_password2}">
+                <input class="form-control" id="new-password2" name="new-password1" th:value="*{confirmPassword}">
             </div>
         </div>
         <br>
         <div>
             <input class="btn btn-primary" type="submit" value="Update">
-            <button class="btn btn-primary">Cancel</button>
-
+            <a class="btn btn-primary" th:href="@{/users/details}">Cancel</a>
         </div>
     </form>
 </section>

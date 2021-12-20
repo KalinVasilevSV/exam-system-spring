@@ -3,6 +3,7 @@ package com.uni.examsystem.web;
 import com.uni.examsystem.models.binding.UserUpdateBindingModel;
 import com.uni.examsystem.service.UserService;
 import com.uni.examsystem.service.impl.AppUser;
+import org.modelmapper.ModelMapper;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,9 +22,11 @@ import java.security.Principal;
 public class UserController {
 
     private final UserService userService;
+    private final ModelMapper modelMapper;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, ModelMapper modelMapper) {
         this.userService = userService;
+        this.modelMapper = modelMapper;
     }
 
     @GetMapping("/panel")
@@ -32,8 +35,14 @@ public class UserController {
     }
 
     @GetMapping("/{id}/edit")
-    public String editUser(@PathVariable Long id, Model model,
-                           @AuthenticationPrincipal AppUser currentUser) {
+    public String editUser(@PathVariable Long id, Model model) {
+
+        var userDetailsView = userService.findById(id);
+
+        var userUpdateBindingModel = modelMapper.map(userDetailsView, UserUpdateBindingModel.class);
+
+        model.addAttribute("userModel", userUpdateBindingModel);
+
         return "edit-user";
     }
 
@@ -41,8 +50,15 @@ public class UserController {
     public String editUser(@PathVariable Long id, @Valid UserUpdateBindingModel userModel,
                            BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
-        return "";
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("userModel", userModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userModel", bindingResult);
 
+            return "redirect:/users/" + id + "/edit";
+        }
+
+        userService.updateUser(userModel);
+        return "redirect:/users/details";
     }
 
     @GetMapping("/details")
