@@ -5,9 +5,14 @@ import com.uni.examsystem.service.ExamService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/exams")
@@ -54,6 +59,22 @@ public class ExamController {
 
         model.addAttribute("examModel", examModel);
         return "edit-exam";
+    }
+
+    @PatchMapping("{id}/edit")
+    public String editExam(@PathVariable Long id, @Valid ExamBindingModel examModel,
+                           BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("examModel", examModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.examModel", bindingResult);
+
+            return "redirect:/exams/" + id + "/edit";
+        }
+
+        examService.updateExam(examModel);
+
+        return "redirect:/exams/" + id + "/details";
     }
 
 

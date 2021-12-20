@@ -1,5 +1,6 @@
 package com.uni.examsystem.service;
 
+import com.uni.examsystem.models.binding.ExamBindingModel;
 import com.uni.examsystem.models.view.ExamView;
 
 import java.util.List;
@@ -15,4 +16,6 @@ public interface ExamService {
     List<ExamView> getAll();
 
     void initializeExams();
+
+    void updateExam(ExamBindingModel examModel);
 }

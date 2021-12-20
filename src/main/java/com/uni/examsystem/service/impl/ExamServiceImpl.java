@@ -1,5 +1,6 @@
 package com.uni.examsystem.service.impl;
 
+import com.uni.examsystem.models.binding.ExamBindingModel;
 import com.uni.examsystem.models.entities.ExamEntity;
 import com.uni.examsystem.models.entities.enums.ExamStatusEnum;
 import com.uni.examsystem.models.view.ExamView;
@@ -63,5 +64,17 @@ public class ExamServiceImpl implements ExamService {
             exam.setTimeGiven(Duration.ofMinutes(40));
             examRepository.save(exam);
         }
+    }
+
+    @Override
+    public void updateExam(ExamBindingModel examModel) {
+        var examEntity = examRepository.findById(examModel.getId()).orElseThrow();
+
+        examEntity.setTimeGiven(examModel.getTimeGiven());
+        examEntity.setExamName(examModel.getName());
+        examEntity.setStatus(examModel.getStatus());
+
+        examRepository.save(examEntity);
+
     }
 }

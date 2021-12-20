@@ -11,6 +11,8 @@ import javax.validation.constraints.NotNull;
 import java.time.Duration;
 
 public class ExamBindingModel {
+
+    private Long id;
     @NotBlank
     @UniqueExamName
     private String name;
@@ -20,6 +22,14 @@ public class ExamBindingModel {
     @NotNull
     @Enumerated(EnumType.STRING)
     private ExamStatusEnum status;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {return name;}
 
