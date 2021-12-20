@@ -41,10 +41,7 @@
 <br>
 
 <div align="center">
-    <button type="button" class="btn btn-primary">View</button>
     <button type="button" class="btn btn-primary">Add</button>
-    <button type="button" class="btn btn-primary">Update</button>
-    <button type="button" class="btn btn-primary">Delete</button>
 </div>
 
 <table class="table">
@@ -58,6 +55,9 @@
         <th scope="col">Answer B</th>
         <th scope="col">Answer C</th>
         <th scope="col">Correct answer</th>
+        <th scope="col">View</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
     </tr>
     </thead>
     <tbody>
@@ -79,6 +79,10 @@
             <td>N/A</td>
             <td>N/A</td>
         </div>
+
+        <td><a class="btn btn-primary" th:href="@{/questions/{id}/details(id=${question.getId()})}">View</a></td>
+        <td><a class="btn btn-primary" th:href="@{/questions/{id}/edit(id=${question.getId()})}">Edit</a></td>
+        <td><a class="btn btn-primary" th:href="@{/questions/{id}/delete(id=${question.getId()})}">Delete</a></td>
     </tr>
     </th:block>
     </tbody>

@@ -15,7 +15,7 @@
 |	--------exam user scorecard score (url: ~/exams/{exam}/{user}/{scorecard}/score) ADMIN (exam-user-scorecard-score.html)
 
 	---------------------QUESTIONS-----------------------------------
-	>questions
+	>questions (url: ~/questions/panel) ADMIN (questions-panel.html)
 |	----add-question (url: ~/questions/add) ADMIN (add-question.html)
 |	----question-details (url: ~/questions/{question}/details) ADMIN (question-details.html)
 |	--------edit-question (url: ~/questions/{question}/edit) ADMIN (edit-question.html)

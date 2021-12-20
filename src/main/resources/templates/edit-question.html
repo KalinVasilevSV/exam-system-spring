@@ -36,32 +36,47 @@
 <section class=" text-dark p-5 p-lg-1 pt-lg-5 text-center text-sm-start">
     <button class="btn btn-primary">Cancel</button>
 <div>
-    <form>
+    <form th:action="@{/{id}/edit(id=question.getId())}" th:object="${editedQuestion}" method="post" >
         <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="question-text">Question text:</label>
-            <input type="text" id="question-text" class="form-control" th:value="${question}">
+            <label>Old question text:</label>
+            <label th:text="${question.getQuestion()}"></label><br>
+            <label>New question text:</label>
+            <input type="text" class="form-control" th:field="*{questionText}" th:value="${question.getQuestion()}">
         </div>
             <div>
                 <br>
                 <br>
                 <p>Leave empty if Question is of OPEN type.</p>
             <div class="form-group col-md-6">
-                <label for="A">Answer A:</label>
-                <input class="form-control"  id="A" name="A" th:value="${a}">
+                <label>Old answer A:</label>
+                <label th:text="${question.getAnswerSet().getA()}"></label>
+                <label>New answer A:</label>
+                <input class="form-control"  th:field="*{answerA}" th:value="${question.getAnswerSet().getA()}">
             </div>
             <div class="form-group col-md-6">
-                <label for="B">Answer B:</label>
-                <input class="form-control"  id="B" name="B" th:value="${b}">
+                <label>Old answer B:</label>
+                <label th:text="${question.getAnswerSet().getB()}"></label><br>
+                <label>New answer B:</label>
+                <input class="form-control"  th:field="*{answerB}" th:value="${question.getAnswerSet().getB()}">
             </div>
             <div class="form-group col-md-6">
-                <label for="C">Answer C:</label>
-                <input class="form-control"  id="C" name="C" th:value="${c}">
+                <label>Old answer C:</label>
+                <label th:text="${question.getAnswerSet().getC()}"></label><br>
+                <label >New answer C:</label>
+                <input class="form-control"  th:field="*{answerC}" th:value="${question.getAnswerSet().getC()}">
             </div>
+                <div class="form-group col-md-6">
+                    <label>Old correct answer:</label>
+                    <label th:text="${question.getAnswerSet().getAnswer().name()}"></label><br>
+                    <label >New correct answer:</label>
+                    <input class="form-control"  th:field="*{correctAnswer}" th:value="${question.getAnswerSet().getC()}">
+                </div>
             </div>
             <input class="btn btn-primary" type="submit" value="Update">
         </div>
     </form>
+    <a class="btn btn-primary" th:href="@{/questions/{id}/delete(id=${question.getId()})}">Delete</a>
 </div>
 </section>
 </body>

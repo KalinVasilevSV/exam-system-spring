@@ -1,14 +1,17 @@
 package com.uni.examsystem.web;
 
+import com.uni.examsystem.models.binding.QuestionBindingModel;
 import com.uni.examsystem.models.view.QuestionView;
 import com.uni.examsystem.service.QuestionService;
 import net.bytebuddy.TypeCache;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/questions")
@@ -34,8 +37,23 @@ public class QuestionController {
     }
 
     @GetMapping("/{id}/edit")
-    public String editQuestion(@PathVariable Long id) {
+    public String editQuestion(@PathVariable Long id, Model model) {
+        model.addAttribute("question",questionService.findById(id).get());
+
         return "edit-question";
+    }
+
+    //TODO implement method
+    @PostMapping("/{id}/edit")
+    public String saveEditedQuestion(@PathVariable Long id, @Valid QuestionBindingModel editedQuestion,
+                                     BindingResult bindingResult, RedirectAttributes redirectAttributes){
+        if(bindingResult.hasErrors()){
+            redirectAttributes.addFlashAttribute("editedQuestion",editedQuestion);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.editedQuestion",bindingResult);
+            return "redirect:/questions/"+id+"/edit";
+        }
+
+        return "/question-details";
     }
 
     @GetMapping("/panel")

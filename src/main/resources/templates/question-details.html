@@ -58,7 +58,8 @@
                 <div th:if="${question.getqType().ordinal()==1}">
                     <p>Question is OPEN type.</p>
                 </div>
-                <button class="btn btn-primary">Edit</button>
+                <a class="btn btn-primary" th:href="@{/questions/{id}/edit(id=${question.getId()})}">Edit</a>
+                <a class="btn btn-primary" th:href="@{/questions/{id}/delete(id=${question.getId()})}">Delete</a>
             </div>
     </div>
 </section>
