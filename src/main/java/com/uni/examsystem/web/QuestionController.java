@@ -38,28 +38,34 @@ public class QuestionController {
 
     @GetMapping("/{id}/edit")
     public String editQuestion(@PathVariable Long id, Model model) {
-        model.addAttribute("question",questionService.findById(id).get());
+        model.addAttribute("question", questionService.findById(id).get());
 
         return "edit-question";
     }
 
     //TODO implement method
-    @PostMapping("/{id}/edit")
-    public String saveEditedQuestion(@PathVariable Long id, @Valid QuestionBindingModel editedQuestion,
-                                     BindingResult bindingResult, RedirectAttributes redirectAttributes){
-        if(bindingResult.hasErrors()){
-            redirectAttributes.addFlashAttribute("editedQuestion",editedQuestion);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.editedQuestion",bindingResult);
-            return "redirect:/questions/"+id+"/edit";
+    @PatchMapping("/{id}/edit")
+    public String saveEditedQuestion(@PathVariable Long id, @Valid QuestionBindingModel questionModel,
+                                     BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("questionModel", questionModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.questionModel", bindingResult);
+            return "redirect:/questions/" + id + "/edit";
         }
 
-        return "/question-details";
+        return "redirect:/questions/" + id + "/details";
     }
 
     @GetMapping("/panel")
-    public String questionsPanel(Model model){
-        model.addAttribute("questions",questionService.getAll());
+    public String questionsPanel(Model model) {
+        model.addAttribute("questions", questionService.getAll());
 
         return "questions-panel";
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteQuestion(@PathVariable Long id) {
+        questionService.deleteQuestion(id);
+        return "redirect:/questions/" + (id - 1) + "/details";
     }
 }

@@ -12,6 +12,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
 public class QuestionBindingModel {
+
+    private Long id;
     @NotBlank
     private String question;
     @NotNull
@@ -23,19 +25,47 @@ public class QuestionBindingModel {
     @NotNull
     private AnswerSetEntity answerSet;
 
-    public String getQuestion() {return question;}
+    public Long getId() {
+        return id;
+    }
 
-    public void setQuestion(String question) {this.question = question;}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public QuestionTypeEnum getqType() {return qType;}
+    public QuestionTypeEnum getqType() {
+        return qType;
+    }
 
-    public void setqType(QuestionTypeEnum qType) {this.qType = qType;}
+    public String getQuestion() {
+        return question;
+    }
 
-    public float getScore() {return score;}
+    public void setQuestion(String question) {
+        this.question = question;
+    }
 
-    public void setScore(float score) {this.score = score;}
+    public QuestionTypeEnum getType() {
+        return qType;
+    }
 
-    public AnswerSetEntity getAnswerSet() {return answerSet;}
+    public void setqType(QuestionTypeEnum qType) {
+        this.qType = qType;
+    }
 
-    public void setAnswerSet(AnswerSetEntity answerSet) {this.answerSet = answerSet;}
+    public float getScore() {
+        return score;
+    }
+
+    public void setScore(float score) {
+        this.score = score;
+    }
+
+    public AnswerSetEntity getAnswerSet() {
+        return answerSet;
+    }
+
+    public void setAnswerSet(AnswerSetEntity answerSet) {
+        this.answerSet = answerSet;
+    }
 }

@@ -64,13 +64,13 @@ public class UserController {
     @GetMapping("/details")
     public String userDetails(Model model, Principal principal) {
 
-
         model.addAttribute("user", userService.findByUserName(principal.getName()).get());
         return "user-details";
     }
 
     @GetMapping("/{userId}/{examId}/take")
     public String takeExam(@PathVariable String examId, @PathVariable String userId, Model model) {
+
         return "take-exam-student";
     }
 

@@ -44,11 +44,16 @@ public class QuestionServiceImpl implements QuestionService {
     public Optional<Set<QuestionView>> getAll() {
         return questionRepository.getAll().map(questionEntities -> {
             var questionViews = new HashSet<QuestionView>();
-            for (QuestionEntity questionEntity:questionEntities){
+            for (QuestionEntity questionEntity : questionEntities) {
                 questionViews.add(new QuestionView(questionEntity));
             }
-            return  questionViews;
+            return questionViews;
         });
+    }
+
+    @Override
+    public void deleteQuestion(Long id) {
+        questionRepository.deleteById(id);
     }
 
     @Override
