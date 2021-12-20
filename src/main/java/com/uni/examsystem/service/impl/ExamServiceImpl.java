@@ -11,6 +11,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
@@ -38,6 +39,17 @@ public class ExamServiceImpl implements ExamService {
     public Optional<ExamView> findById(Long id) {
 
         return examRepository.findById(id).map(examEntity -> modelMapper.map(examEntity, ExamView.class));
+    }
+
+    @Override
+    public Optional<Set<ExamView>> getAll() {
+        return examRepository.getAll().map(examEntities -> {
+            var examViews = new HashSet<ExamView>();
+            for (ExamEntity examEntity:examEntities) {
+                examViews.add(new ExamView(examEntity));
+            }
+            return examViews;
+        });
     }
 
     @Override
