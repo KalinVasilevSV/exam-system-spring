@@ -1,6 +1,9 @@
 package com.uni.examsystem.web;
 
+import com.uni.examsystem.models.view.QuestionView;
 import com.uni.examsystem.service.QuestionService;
+import net.bytebuddy.TypeCache;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +28,7 @@ public class QuestionController {
 
     @GetMapping("/{id}/details")
     public String questionDetails(@PathVariable Long id, Model model) {
-        model.addAttribute("question", questionService.findById(id));
+        model.addAttribute("question", questionService.findById(id).get());
 
         return "question-details";
     }
@@ -35,4 +38,10 @@ public class QuestionController {
         return "edit-question";
     }
 
+    @GetMapping("/panel")
+    public String questionsPanel(Model model){
+        model.addAttribute("questions",questionService.getAll());
+
+        return "questions-panel";
+    }
 }

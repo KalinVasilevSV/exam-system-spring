@@ -3,8 +3,10 @@ package com.uni.examsystem.service;
 import com.uni.examsystem.models.view.QuestionView;
 
 import java.util.Optional;
+import java.util.Set;
 
 public interface QuestionService {
     void initializeQuestions();
     Optional<QuestionView> findById(Long id);
+    Optional<Set<QuestionView>> getAll();
 }
