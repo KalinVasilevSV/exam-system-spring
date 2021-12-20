@@ -36,13 +36,13 @@
 <section class=" text-dark p-5 p-lg-1 pt-lg-5 text-center text-sm-start">
     <button class="btn btn-primary">Cancel</button>
 <div>
-    <form th:action="@{/{id}/edit(id=question.getId())}" th:object="${editedQuestion}" method="post" >
+    <form th:action="@{/questions/{id}/edit(id=*{id})}" th:object="${question}" method="post" >
         <div class="form-row">
         <div class="form-group col-md-6">
             <label>Old question text:</label>
-            <label th:text="${question.getQuestion()}"></label><br>
+            <label th:text="*{}"></label><br>
             <label>New question text:</label>
-            <input type="text" class="form-control" th:field="*{questionText}" th:value="${question.getQuestion()}">
+            <input type="text" class="form-control" th:field="*{question}" th:value="${question.getQuestion()}">
         </div>
             <div>
                 <div class="form-group col-md-6">

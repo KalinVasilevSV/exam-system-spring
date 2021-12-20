@@ -43,15 +43,15 @@ public class QuestionController {
         return "edit-question";
     }
 
-    //TODO implement method
     @PatchMapping("/{id}/edit")
-    public String saveEditedQuestion(@PathVariable Long id, @Valid QuestionBindingModel questionModel,
+    public String editQuestion(@PathVariable Long id, @Valid QuestionBindingModel questionModel,
                                      BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("questionModel", questionModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.questionModel", bindingResult);
             return "redirect:/questions/" + id + "/edit";
         }
+        questionService.updateQuestion(questionModel);
 
         return "redirect:/questions/" + id + "/details";
     }

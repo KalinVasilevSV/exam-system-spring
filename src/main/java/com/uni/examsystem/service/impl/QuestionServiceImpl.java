@@ -39,19 +39,19 @@ public class QuestionServiceImpl implements QuestionService {
     public void updateQuestion(QuestionBindingModel editedQuestion) {
         var questionEntity = questionRepository.findById(editedQuestion.getId()).orElseThrow();
 
-        if(!editedQuestion.getQuestion().equals(questionEntity.getQuestion())){
+        if (!editedQuestion.getQuestion().equals(questionEntity.getQuestion())) {
             questionEntity.setQuestion(editedQuestion.getQuestion());
         }
-        if(editedQuestion.getScore() != questionEntity.getScore()){
+        if (editedQuestion.getScore() != questionEntity.getScore()) {
             questionEntity.setScore(editedQuestion.getScore());
         }
-        if(editedQuestion.getqType().ordinal()!=questionEntity.getqType().ordinal()){
+        if (editedQuestion.getqType().ordinal() != questionEntity.getqType().ordinal()) {
             questionEntity.setqType(editedQuestion.getqType());
-            if(questionEntity.getqType()==QuestionTypeEnum.OPEN){
+            if (questionEntity.getqType() == QuestionTypeEnum.OPEN) {
                 questionEntity.setAnswerSet(null);
             }
         }
-        if(questionEntity.getAnswerSet()!=null) {
+        if (questionEntity.getAnswerSet() != null) {
             if (!editedQuestion.getAnswerSet().getA().equals(questionEntity.getAnswerSet().getA())) {
                 questionEntity.getAnswerSet().setA(editedQuestion.getAnswerSet().getA());
             }

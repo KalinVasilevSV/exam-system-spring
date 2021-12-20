@@ -1,17 +1,15 @@
 WORKLOAD
 
 ~Tano~~~~~~~~~~~~~~~~~~~
--implement post logic to the controllers
--add thymeleaf logic to html files
+-edit-questions html
+-exam edit
 
 
 ~Georgi~~~~~~~~~~~~~~~~~~
--add edit-user.html
--add user-details.htmlok
--add exam-details-for-admin.html
+
 
 ~Kalin~~~~~~~~~~~~~~~~~~~
--find questions and answers
+-exam-details
 
 ==Pending:==
 
@@ -22,6 +20,5 @@ Front:
 
 
 Back:
--logic for the whole exams (adding, editing, deleting)
 -logic for the questions (adding, editing, deleting)
 -logic for letting students access a specific exam
