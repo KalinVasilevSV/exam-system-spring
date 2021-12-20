@@ -34,56 +34,67 @@
 </section>
 
 <section class=" text-dark p-5 p-lg-1 pt-lg-5 text-center text-sm-start">
-    <button class="btn btn-primary">Cancel</button>
-<div>
-    <form th:action="@{/questions/{id}/edit(id=*{id})}" th:object="${question}" method="post" >
-        <div class="form-row">
-        <div class="form-group col-md-6">
-            <label>Old question text:</label>
-            <label th:text="*{}"></label><br>
-            <label>New question text:</label>
-            <input type="text" class="form-control" th:field="*{question}" th:value="${question.getQuestion()}">
-        </div>
-            <div>
+    <div>
+        <form th:action="@{/questions/{id}/edit(id=*{id})}" th:object="${questionModel}" th:method="patch">
+            <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label>Old score:</label>
-                    <label th:text="${question.getScore()}"></label>
-                    <label>New score:</label>
-                    <input class="form-control"  th:field="*{score}" th:value="${question.getScore()}">
+                    <label>Old question text:</label>
+                    <label th:text="${questionView.get().question}"></label><br>
+                    <label>New question text:</label>
+                    <label>
+                        <input type="text" class="form-control" th:value="*{question}"/>
+                    </label>
                 </div>
-                <br>
-                <br>
-                <p>Leave empty if Question is of OPEN type.</p>
-            <div class="form-group col-md-6">
-                <label>Old answer A:</label>
-                <label th:text="${question.getAnswerSet().getA()}"></label>
-                <label>New answer A:</label>
-                <input class="form-control"  th:field="*{answerA}" th:value="${question.getAnswerSet().getA()}">
-            </div>
-            <div class="form-group col-md-6">
-                <label>Old answer B:</label>
-                <label th:text="${question.getAnswerSet().getB()}"></label><br>
-                <label>New answer B:</label>
-                <input class="form-control"  th:field="*{answerB}" th:value="${question.getAnswerSet().getB()}">
-            </div>
-            <div class="form-group col-md-6">
-                <label>Old answer C:</label>
-                <label th:text="${question.getAnswerSet().getC()}"></label><br>
-                <label >New answer C:</label>
-                <input class="form-control"  th:field="*{answerC}" th:value="${question.getAnswerSet().getC()}">
-            </div>
-                <div class="form-group col-md-6">
-                    <label>Old correct answer:</label>
-                    <label th:text="${question.getAnswerSet().getAnswer().name()}"></label><br>
-                    <label >New correct answer:</label>
-                    <input class="form-control"  th:field="*{correctAnswer}" th:value="${question.getAnswerSet().getC()}">
+                <div>
+                    <div class="form-group col-md-6">
+                        <label>Old score:</label>
+                        <label th:text="${questionView.get().getScore()}"></label>
+                        <label>New score:</label>
+                        <label>
+                            <input class="form-control" th:value="*{score}">
+                        </label>
+                    </div>
+                    <br>
+                    <br>
+                    <p>Leave empty if Question is of OPEN type.</p>
+                    <div class="form-group col-md-6">
+                        <label>Old answer A:</label>
+                        <label th:text="${questionView.get().getAnswerSet().getA()}"></label><br>
+                        <label>New answer A:</label>
+                        <input class="form-control" th:value="*{answerSet}">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Old answer B:</label>
+                        <label th:text="${questionView.get().getAnswerSet().getB()}"></label><br>
+                        <label>New answer B:</label>
+                        <input class="form-control" th:value="*{answerSet}">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Old answer C:</label>
+                        <label th:text="${questionView.get().getAnswerSet().getC()}"></label><br>
+                        <label>New answer C:</label>
+                        <input class="form-control" th:value="*{answerSet}">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Old correct answer:</label>
+                        <label th:text="${questionView.get().answerSet.answer.name()}"></label><br>
+                        <label>New correct answer:</label>
+                        <label>
+                            <input class="form-control" th:value="*{answerSet}">
+                        </label>
+                    </div>
                 </div>
+                <input class="btn btn-primary" type="submit" value="Update">
             </div>
-            <input class="btn btn-primary" type="submit" value="Update">
+        </form>
+        <div th:object="${questionModel}">
+            <form th:action="@{/questions/{id}(id=*{id})}" th:method="delete">
+                <input class="btn btn-primary" type="submit" value="Delete"/>
+            </form>
+
+            <a class="btn btn-primary" th:href="@{/questions/{id}/details(id=*{id})}">Cancel</a>
         </div>
-    </form>
-    <a class="btn btn-primary" th:href="@{/questions/{id}/delete(id=${question.getId()})}">Delete</a>
-</div>
+    </div>
 </section>
 </body>
 </html>

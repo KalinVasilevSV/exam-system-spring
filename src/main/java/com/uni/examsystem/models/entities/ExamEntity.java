@@ -4,6 +4,7 @@ import com.uni.examsystem.models.entities.enums.ExamStatusEnum;
 
 import javax.persistence.*;
 import java.time.Duration;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -17,9 +18,9 @@ public class ExamEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private ExamStatusEnum status;
     @ManyToMany(fetch = FetchType.EAGER)
-    private Set<QuestionEntity> questions;
+    private Set<QuestionEntity> questions = new HashSet<>();
     @ManyToMany(fetch = FetchType.EAGER)
-    private Set<UserEntity> users;
+    private Set<UserEntity> users=new HashSet<>();
 
     public String getExamName() {
         return examName;

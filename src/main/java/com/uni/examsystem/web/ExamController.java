@@ -18,8 +18,10 @@ public class ExamController {
     }
 
     @GetMapping("/all")
-    public String allExams() {
+    public String allExams(Model model) {
+        model.addAttribute("exams",examService.getAll().get());
         return "all-exams-admin";
+
     }
 
     @GetMapping("/{id}/details")

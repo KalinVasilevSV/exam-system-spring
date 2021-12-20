@@ -1,10 +1,8 @@
 package com.uni.examsystem.web;
 
 import com.uni.examsystem.models.binding.QuestionBindingModel;
-import com.uni.examsystem.models.view.QuestionView;
 import com.uni.examsystem.service.QuestionService;
-import net.bytebuddy.TypeCache;
-import org.springframework.data.domain.Sort;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,9 +16,11 @@ import javax.validation.Valid;
 public class QuestionController {
 
     private final QuestionService questionService;
+    private final ModelMapper modelMapper;
 
-    public QuestionController(QuestionService questionService) {
+    public QuestionController(QuestionService questionService, ModelMapper modelMapper) {
         this.questionService = questionService;
+        this.modelMapper = modelMapper;
     }
 
 
@@ -38,14 +38,20 @@ public class QuestionController {
 
     @GetMapping("/{id}/edit")
     public String editQuestion(@PathVariable Long id, Model model) {
-        model.addAttribute("question", questionService.findById(id).get());
+
+        var questionView = questionService.findById(id);
+        var questionUpdateBindingModel = modelMapper.map(questionView, QuestionBindingModel.class);
+
+
+        model.addAttribute("questionModel", questionUpdateBindingModel);
+        model.addAttribute("questionView", questionView);
 
         return "edit-question";
     }
 
     @PatchMapping("/{id}/edit")
     public String editQuestion(@PathVariable Long id, @Valid QuestionBindingModel questionModel,
-                                     BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+                               BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("questionModel", questionModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.questionModel", bindingResult);
@@ -58,7 +64,7 @@ public class QuestionController {
 
     @GetMapping("/panel")
     public String questionsPanel(Model model) {
-        model.addAttribute("questions", questionService.getAll().get());
+        model.addAttribute("questions", questionService.getAllQuestions());
 
         return "questions-panel";
     }

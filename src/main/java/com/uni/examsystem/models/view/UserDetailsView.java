@@ -1,6 +1,7 @@
 package com.uni.examsystem.models.view;
 
 import com.uni.examsystem.models.entities.ExamEntity;
+import com.uni.examsystem.models.entities.UserEntity;
 import com.uni.examsystem.models.entities.UserRoleEntity;
 
 import java.util.HashSet;
@@ -15,6 +16,14 @@ public class UserDetailsView {
     private String facNo;
     private boolean canEdit;
 
+    public UserDetailsView(){}
+    public UserDetailsView(UserEntity userEntity){
+        this.id=userEntity.getId();
+        this.username=userEntity.getUsername();
+        this.firstName=userEntity.getFirstName();
+        this.lastName=userEntity.getLastName();
+        this.facNo=userEntity.getFacNo();
+    }
 
     public Long getId() {
         return id;
