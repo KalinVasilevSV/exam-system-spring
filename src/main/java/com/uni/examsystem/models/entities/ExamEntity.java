@@ -16,9 +16,9 @@ public class ExamEntity extends BaseEntity {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private ExamStatusEnum status;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<QuestionEntity> questions;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<UserEntity> users;
 
     public String getExamName() {

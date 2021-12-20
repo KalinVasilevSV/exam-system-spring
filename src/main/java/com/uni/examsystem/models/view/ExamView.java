@@ -8,14 +8,24 @@ import java.time.Duration;
 import java.util.Set;
 
 public class ExamView {
+    private Long id;
     private String name;
     private Duration timeGiven;
     private ExamStatusEnum status;
+
     private Set<QuestionEntity> questions;
     private Set<UserEntity> users;
 
     public ExamView() {
     }
+
+    public Long getId() {return id;}
+
+    public void setId(Long id) {this.id = id;}
+
+    public ExamStatusEnum getStatus() {return status;}
+
+    public void setStatus(ExamStatusEnum status) {this.status = status;}
 
     public String getName() {return name;}
 

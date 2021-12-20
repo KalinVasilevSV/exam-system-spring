@@ -22,7 +22,7 @@ public class UserEntity extends BaseEntity {
     private String facNo;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<UserRoleEntity> roles = new HashSet<>();
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<ExamEntity> exams;
 
     public String getUsername() {
