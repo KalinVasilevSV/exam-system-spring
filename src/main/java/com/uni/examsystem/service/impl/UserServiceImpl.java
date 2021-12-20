@@ -120,14 +120,14 @@ public class UserServiceImpl implements UserService {
     public void updateUser(UserUpdateBindingModel userModel) {
         var userEntity = userRepository.findById(userModel.getId()).orElseThrow();
 
-        if (userModel.getCurrentPassword().equals(userEntity.getPassword())
+        if (userModel.getCurrentPassword().isBlank()) {
+            userEntity.setFirstName(userModel.getFirstName());
+            userEntity.setLastName(userModel.getLastName());
+        } else if (userModel.getCurrentPassword().equals(userEntity.getPassword())
                 && userModel.getPassword().equals(userModel.getConfirmPassword())) {
             userEntity.setPassword(userModel.getPassword());
-
         }
 
-        userEntity.setFirstName(userModel.getFirstName());
-        userEntity.setLastName(userModel.getLastName());
         userRepository.save(userEntity);
 
 

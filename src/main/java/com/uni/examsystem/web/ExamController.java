@@ -25,7 +25,7 @@ public class ExamController {
     @GetMapping("/{id}/details")
     public String examDetails(@PathVariable Long id, Model model) {
         model.addAttribute("exam", examService.findById(id));
-        return "";
+        return "exam-details-for-admin";
     }
 
     @GetMapping("/{examId}/{userId}/{scorecardId}/score")
