@@ -12,8 +12,10 @@ import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class ExamServiceImpl implements ExamService {
@@ -42,14 +44,10 @@ public class ExamServiceImpl implements ExamService {
     }
 
     @Override
-    public Optional<Set<ExamView>> getAll() {
-        return examRepository.getAll().map(examEntities -> {
-            var examViews = new HashSet<ExamView>();
-            for (ExamEntity examEntity:examEntities) {
-                examViews.add(new ExamView(examEntity));
-            }
-            return examViews;
-        });
+    public List<ExamView> getAll() {
+        return examRepository.findAll()
+                .stream()
+                .map(examEntity -> modelMapper.map(examEntity, ExamView.class)).collect(Collectors.toList());
     }
 
     @Override

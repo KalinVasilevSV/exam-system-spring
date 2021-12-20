@@ -1,6 +1,8 @@
 package com.uni.examsystem.web;
 
+import com.uni.examsystem.models.binding.ExamBindingModel;
 import com.uni.examsystem.service.ExamService;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,14 +14,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ExamController {
 
     private final ExamService examService;
+    private final ModelMapper modelMapper;
 
-    public ExamController(ExamService examService) {
+    public ExamController(ExamService examService, ModelMapper modelMapper) {
         this.examService = examService;
+        this.modelMapper = modelMapper;
     }
 
     @GetMapping("/all")
     public String allExams(Model model) {
-        model.addAttribute("exams",examService.getAll().get());
+        model.addAttribute("exams", examService.getAll());
         return "all-exams-admin";
 
     }
@@ -43,7 +47,14 @@ public class ExamController {
     }
 
     @GetMapping("/{id}/edit")
-    public String editExam(@PathVariable Long id) {
+    public String editExam(@PathVariable Long id, Model model) {
+
+        var examView = examService.findById(id);
+        var examModel = modelMapper.map(examView, ExamBindingModel.class);
+
+        model.addAttribute("examModel", examModel);
         return "edit-exam";
     }
+
+
 }

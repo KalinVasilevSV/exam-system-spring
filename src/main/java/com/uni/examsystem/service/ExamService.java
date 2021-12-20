@@ -2,6 +2,7 @@ package com.uni.examsystem.service;
 
 import com.uni.examsystem.models.view.ExamView;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -10,6 +11,8 @@ public interface ExamService {
     boolean isExamNameFree(String examname);
 
     Optional<ExamView> findById(Long id);
-    Optional<Set<ExamView>> getAll();
+
+    List<ExamView> getAll();
+
     void initializeExams();
 }

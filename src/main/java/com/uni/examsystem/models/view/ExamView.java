@@ -19,22 +19,8 @@ public class ExamView {
     private Set<QuestionView> questions = new HashSet<>();
     private Set<UserDetailsView> users=new HashSet<>();
 
-    public ExamView() {
-    }
-    public ExamView(ExamEntity examEntity){
-        this.id=examEntity.getId();
-        this.examName=examEntity.getExamName();
-        this.timeGiven=examEntity.getTimeGiven();
-        this.status=examEntity.getStatus();
-        this.questions=examEntity.getQuestions().stream().map(questionEntity -> {
-            var questionView = new QuestionView(questionEntity);
-            return questionView;
-        }).collect(Collectors.toSet());
-        this.users=examEntity.getUsers().stream().map(userEntity -> {
-            var userDetailsView = new UserDetailsView(userEntity);
-            return userDetailsView;
-        }).collect(Collectors.toSet());
-    }
+    public ExamView() {}
+
     public Long getId() {return id;}
 
     public void setId(Long id) {this.id = id;}
