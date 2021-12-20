@@ -3,6 +3,7 @@ package com.uni.examsystem.service;
 import com.uni.examsystem.models.binding.QuestionBindingModel;
 import com.uni.examsystem.models.view.QuestionView;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -13,8 +14,8 @@ public interface QuestionService {
 
     Optional<QuestionView> findById(Long id);
 
-    Optional<Set<QuestionView>> getAll();
 
     void deleteQuestion(Long id);
 
+    List<QuestionView> getAllQuestions();
 }

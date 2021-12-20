@@ -14,6 +14,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class QuestionServiceImpl implements QuestionService {
@@ -68,20 +69,19 @@ public class QuestionServiceImpl implements QuestionService {
         questionRepository.save(questionEntity);
     }
 
-    @Override
-    public Optional<Set<QuestionView>> getAll() {
-        return questionRepository.getAll().map(questionEntities -> {
-            var questionViews = new HashSet<QuestionView>();
-            for (QuestionEntity questionEntity : questionEntities) {
-                questionViews.add(new QuestionView(questionEntity));
-            }
-            return questionViews;
-        });
-    }
+
 
     @Override
     public void deleteQuestion(Long id) {
         questionRepository.deleteById(id);
+    }
+
+    @Override
+    public List<QuestionView> getAllQuestions() {
+        return questionRepository.findAll()
+                .stream()
+                .map(questionEntity -> modelMapper.map(questionEntity, QuestionView.class))
+                .collect(Collectors.toList());
     }
 
     @Override

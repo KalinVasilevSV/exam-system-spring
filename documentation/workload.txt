@@ -1,7 +1,6 @@
 WORKLOAD
 
 ~Tano~~~~~~~~~~~~~~~~~~~
--edit-questions html
 -exam edit
 
 
@@ -20,5 +19,4 @@ Front:
 
 
 Back:
--logic for the questions (adding, editing, deleting)
 -logic for letting students access a specific exam

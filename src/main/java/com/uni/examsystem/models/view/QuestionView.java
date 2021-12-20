@@ -5,6 +5,7 @@ import com.uni.examsystem.models.entities.QuestionEntity;
 import com.uni.examsystem.models.entities.enums.QuestionTypeEnum;
 
 public class QuestionView {
+
     private Long id;
     private String question;
     private QuestionTypeEnum qType;
@@ -12,13 +13,6 @@ public class QuestionView {
     private AnswerSetView answerSet;
 
     public QuestionView(){}
-    public QuestionView(QuestionEntity questionEntity){
-        this.id=questionEntity.getId();
-        this.question=questionEntity.getQuestion();
-        this.qType=questionEntity.getqType();
-        this.score=questionEntity.getScore();
-        this.answerSet=new AnswerSetView(questionEntity.getAnswerSet());
-    }
 
     public Long getId() {return id;}
 
