@@ -45,6 +45,12 @@
             <input type="text" class="form-control" th:field="*{questionText}" th:value="${question.getQuestion()}">
         </div>
             <div>
+                <div class="form-group col-md-6">
+                    <label>Old score:</label>
+                    <label th:text="${question.getScore()}"></label>
+                    <label>New score:</label>
+                    <input class="form-control"  th:field="*{score}" th:value="${question.getScore()}">
+                </div>
                 <br>
                 <br>
                 <p>Leave empty if Question is of OPEN type.</p>

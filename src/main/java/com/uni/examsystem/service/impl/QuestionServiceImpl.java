@@ -1,5 +1,6 @@
 package com.uni.examsystem.service.impl;
 
+import com.uni.examsystem.models.binding.QuestionBindingModel;
 import com.uni.examsystem.models.entities.AnswerSetEntity;
 import com.uni.examsystem.models.entities.QuestionEntity;
 import com.uni.examsystem.models.entities.enums.AnswerEnum;
@@ -34,11 +35,38 @@ public class QuestionServiceImpl implements QuestionService {
 
     }
 
-//    @Override
-//    public Optional<Set<QuestionView>> findAll() {
-//        return questionRepository.findAll();
-//
-//    }
+    @Override
+    public void updateQuestion(QuestionBindingModel editedQuestion) {
+        var questionEntity = questionRepository.findById(editedQuestion.getId()).orElseThrow();
+
+        if(!editedQuestion.getQuestion().equals(questionEntity.getQuestion())){
+            questionEntity.setQuestion(editedQuestion.getQuestion());
+        }
+        if(editedQuestion.getScore() != questionEntity.getScore()){
+            questionEntity.setScore(editedQuestion.getScore());
+        }
+        if(editedQuestion.getqType().ordinal()!=questionEntity.getqType().ordinal()){
+            questionEntity.setqType(editedQuestion.getqType());
+            if(questionEntity.getqType()==QuestionTypeEnum.OPEN){
+                questionEntity.setAnswerSet(null);
+            }
+        }
+        if(questionEntity.getAnswerSet()!=null) {
+            if (!editedQuestion.getAnswerSet().getA().equals(questionEntity.getAnswerSet().getA())) {
+                questionEntity.getAnswerSet().setA(editedQuestion.getAnswerSet().getA());
+            }
+            if (!editedQuestion.getAnswerSet().getB().equals(questionEntity.getAnswerSet().getB())) {
+                questionEntity.getAnswerSet().setB(editedQuestion.getAnswerSet().getB());
+            }
+            if (!editedQuestion.getAnswerSet().getC().equals(questionEntity.getAnswerSet().getC())) {
+                questionEntity.getAnswerSet().setC(editedQuestion.getAnswerSet().getC());
+            }
+            if (!editedQuestion.getAnswerSet().getAnswer().equals(questionEntity.getAnswerSet().getAnswer())) {
+                questionEntity.getAnswerSet().setAnswer(editedQuestion.getAnswerSet().getAnswer());
+            }
+        }
+        questionRepository.save(questionEntity);
+    }
 
     @Override
     public Optional<Set<QuestionView>> getAll() {
@@ -79,4 +107,6 @@ public class QuestionServiceImpl implements QuestionService {
             questionRepository.save(question2);
         }
     }
+
+
 }

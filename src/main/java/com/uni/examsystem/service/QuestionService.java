@@ -8,6 +8,7 @@ import java.util.Set;
 
 public interface QuestionService {
     void initializeQuestions();
+    void updateQuestion(QuestionBindingModel editedQuestion);
     Optional<QuestionView> findById(Long id);
     Optional<Set<QuestionView>> getAll();
 

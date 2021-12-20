@@ -58,7 +58,7 @@ public class QuestionController {
 
     @GetMapping("/panel")
     public String questionsPanel(Model model) {
-        model.addAttribute("questions", questionService.getAll());
+        model.addAttribute("questions", questionService.getAll().get());
 
         return "questions-panel";
     }
