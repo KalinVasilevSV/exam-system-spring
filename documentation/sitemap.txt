@@ -10,7 +10,7 @@
     ---------------------EXAMS-----------------------------------
 	>exams (url: ~/exams/all) ADMIN (all-exams-admin.html)
 |	----add-exam (url: ~/exams/add) ADMIN (add-exam.html)
-|	----exam-details (url: ~/exams/{exam}/details) ADMIN (simple info for the exam) (missing.html)
+|	----exam-details (url: ~/exams/{exam}/details) ADMIN (simple info for the exam) (exam-details.html)
 |	--------edit-exam (url: ~/exams/{exam}/edit) ADMIN (edit-exam.html)
 |	--------exam user scorecard score (url: ~/exams/{exam}/{user}/{scorecard}/score) ADMIN (exam-user-scorecard-score.html)
 

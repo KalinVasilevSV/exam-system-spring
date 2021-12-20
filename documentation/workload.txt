@@ -1,14 +1,19 @@
 WORKLOAD
 
 ~Tano~~~~~~~~~~~~~~~~~~~
--exam edit
+thymeleaf in users panel
+fix edit user
+
 
 
 ~Georgi~~~~~~~~~~~~~~~~~~
+fix navigation and remove buttons on users-panel
+make a take exam tab in navigation
 
 
 ~Kalin~~~~~~~~~~~~~~~~~~~
--exam-details
+all-exams-admin
+add-question
 
 ==Pending:==
 

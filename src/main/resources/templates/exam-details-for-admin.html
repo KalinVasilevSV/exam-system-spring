@@ -33,29 +33,29 @@
 </section>
 
 <section class=" text-dark p-5 p-lg-1 pt-lg-5 text-center text-sm-start">
-    <button class="btn btn-primary">Back</button>
+    <a class="btn btn-primary" th:href="@{/exams/all}">Back</a>
     <div>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label>Exam ID:</label>
                 <label th:text="${exam.get().getId()}"></label>
             </div>
-                <div class="form-group col-md-6">
-                    <label>Exam name:</label>
-                    <label th:text="${exam.get().getExamName()}"></label>
-                </div>
-                <div class="form-group col-md-6">
-                    <label>Time given(min):</label>
-                    <label th:text="${exam.get().getTimeGiven().toMinutes()}"></label>
-                </div>
-                <div class="form-group col-md-6">
-                    <label >Status:</label>
-                    <label th:text="${exam.get().getStatus().name()}"></label>
-                </div>
+            <div class="form-group col-md-6">
+                <label>Exam name:</label>
+                <label th:text="${exam.get().getExamName()}"></label>
             </div>
-            <a class="btn btn-primary" th:href="@{/exams/{id}/edit(id=${exam.get().getId()})}">Edit</a>
-            <a class="btn btn-primary" th:href="@{/exams/{id}/delete(id=${exam.get().getId()})}">Delete</a>
+            <div class="form-group col-md-6">
+                <label>Time given(min):</label>
+                <label th:text="${exam.get().getTimeGiven().toMinutes()}"></label>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Status:</label>
+                <label th:text="${exam.get().getStatus().name()}"></label>
+            </div>
         </div>
+        <a class="btn btn-primary" th:href="@{/exams/{id}/edit(id=${exam.get().getId()})}">Edit</a>
+        <a class="btn btn-primary" th:href="@{/exams/{id}/delete(id=${exam.get().getId()})}">Delete</a>
+    </div>
     </div>
 </section>
 
