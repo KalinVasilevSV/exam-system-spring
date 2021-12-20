@@ -21,36 +21,62 @@
     <link rel="stylesheet" href="style.css" />
     <title>Admin (number)</title>
 </head>
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
-    <div class="container">
-        <a href="#" class="navbar-brand">Users-Admin (number)</a>
+<header th:fragment="navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/}">Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <ul class="navbar-nav">
+                    <!--                    nav bar if authenticated-->
+                    <li sec:authorize="isAuthenticated()">
+                        <a class="nav-link" th:href="@{/users/details}">Profile</a>
+                    </li>
+                    <li sec:authorize="isAuthenticated()">
+                        <a class="nav-link" href="#">Something 2</a>
+                    </li>
+                    <li sec:authorize="isAuthenticated()">
+                        <a class="nav-link" href="#">Something 3</a>
+                    </li>
 
-        <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navmenu"
-        >
-            <span class="navbar-toggler-icon"></span>
-        </button>
+                    <!--                    admin panel-->
+                    <li class="nav-item dropdown nav-bar-font-size" sec:authorize="hasRole('ADMIN')">
+                        <a class="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink2" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Admin Panel
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" th:href="@{/users/panel}">Users Panel</a></li>
+                            <li><a class="dropdown-item" th:href="@{/exams/all}">All Exams</a></li>
+                            <li><a class="dropdown-item" th:href="@{/exams/add}">Add Exam</a></li>
+                            <li><a class="dropdown-item" th:href="@{/questions/panel}">Questions Panel</a></li>
+                            <li><a class="dropdown-item" th:href="@{/questions/add}">Add Question</a></li>
+                        </ul>
+                    </li>
 
-        <div class="collapse navbar-collapse" id="navmenu">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a href="#newuser" class="nav-link">New User</a>
-                </li>
+                    <!--                    logout-->
+                    <li sec:authorize="isAuthenticated()">
+                        <form th:action="@{/users/logout}" th:method="post">
+                            <input class="btn btn-link nav-link" style="font-size: 19px" type="submit" value="Logout">
+                        </form>
+                    </li>
 
-                <li class="nav-item">
-                    <a href="#upuser" class="nav-link">Up User</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#index" class="nav-link">Index</a>
-                </li>
-            </ul>
+                    <!--                    nav bar if NOT authenticated-->
+                    <li sec:authorize="!isAuthenticated()">
+                        <a class="nav-link" th:href="@{/users/login}">Login</a>
+                    </li>
+                    <li sec:authorize="!isAuthenticated()">
+                        <a class="nav-link" th:href="@{/users/register}">Register</a>
+                    </li>
+
+                </ul>
+            </div>
         </div>
-
-    </div>
-</nav>
+    </nav>
+</header>
 <section
         class="bg-dark text-light p-5 p-lg-1 pt-lg-5 text-center text-sm-start"
 >
@@ -69,23 +95,8 @@
     </div>
 
 </section>
-<div align="center">
-    <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <br>
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
 
-</div>
 <br>
-
-<div align="center">
-    <button type="button" class="btn btn-primary">View</button>
-    <button type="button" class="btn btn-primary">Add</button>
-    <button type="button" class="btn btn-primary">Update</button>
-    <button type="button" class="btn btn-primary">Delete</button>
-</div>
-
 <table class="table">
     <thead>
     <tr>
