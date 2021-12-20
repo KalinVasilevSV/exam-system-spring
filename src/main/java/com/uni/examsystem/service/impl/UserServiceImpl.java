@@ -112,6 +112,11 @@ public class UserServiceImpl implements UserService {
                 });
     }
 
+    @Override
+    public Optional<UserEntity> findByFacNumber(String facNumber) {
+        return userRepository.findByFacNoIgnoreCase(facNumber);
+    }
+
     private boolean isAdmin(UserEntity user) {
         return user.getRoles()
                 .stream().map(UserRoleEntity::getRole).anyMatch(r -> r == UserRoleEnum.ADMIN);

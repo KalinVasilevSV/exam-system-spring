@@ -34,7 +34,7 @@ public class UserController {
     @GetMapping("/{id}/edit")
     public String editUser(@PathVariable Long id, Model model,
                            @AuthenticationPrincipal AppUser currentUser) {
-        return "";
+        return "edit-user";
     }
 
     @PatchMapping("/{id}/edit")
@@ -50,7 +50,7 @@ public class UserController {
 
 
         model.addAttribute("user", userService.findByUserName(principal.getName()).get());
-        return "test";
+        return "user-details";
     }
 
     @GetMapping("/{userId}/{examId}/take")

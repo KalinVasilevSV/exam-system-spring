@@ -29,8 +29,7 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                 .antMatchers("/", "/users/login", "/users/register").permitAll()
-                .antMatchers("/stats",
-                        "/users/panel",
+                .antMatchers("/users/panel",
                         "/exams/all",
                         "/exams/{id}/edit",
                         "/exams/{examId}/{userId}/{scorecardId}/score",

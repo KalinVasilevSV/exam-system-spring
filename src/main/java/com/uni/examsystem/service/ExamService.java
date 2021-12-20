@@ -9,4 +9,6 @@ public interface ExamService {
     boolean isExamNameFree(String examname);
 
     Optional<ExamView> findById(Long id);
+
+    void initializeExams();
 }

@@ -18,7 +18,6 @@ public class QuestionServiceImpl implements QuestionService {
 
     private final QuestionRepository questionRepository;
     private final AnswerSetRepository answerSetRepository;
-
     private final ModelMapper modelMapper;
 
     public QuestionServiceImpl(QuestionRepository questionRepository, AnswerSetRepository answerSetRepository, ModelMapper modelMapper) {
