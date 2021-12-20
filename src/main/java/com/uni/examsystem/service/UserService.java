@@ -28,4 +28,6 @@ public interface UserService {
     void updateUser(UserUpdateBindingModel userModel);
 
     UserDetailsView findById(Long id);
+
+    Set<UserDetailsView> getAllUsers();
 }

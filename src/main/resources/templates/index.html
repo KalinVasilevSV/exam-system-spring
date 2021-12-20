@@ -13,7 +13,7 @@
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
     <!--    our files-->
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="../static/css/main.css">
     <title>Exam-System</title>
 
 
@@ -28,7 +28,7 @@
 </div>
 
 <div class="position-absolute top-50 start-50 translate-middle" sec:authorize="isAuthenticated()">
-    <h1>Logged in</h1>
+    <h1>Welcome <span sec:authentication="name">username</span></h1>
 </div>
 
 

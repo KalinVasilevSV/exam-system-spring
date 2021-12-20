@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -123,6 +124,7 @@ public class UserServiceImpl implements UserService {
         if (userModel.getCurrentPassword().isBlank()) {
             userEntity.setFirstName(userModel.getFirstName());
             userEntity.setLastName(userModel.getLastName());
+            userEntity.setPassword(userModel.getPassword());
         } else if (userModel.getCurrentPassword().equals(userEntity.getPassword())
                 && userModel.getPassword().equals(userModel.getConfirmPassword())) {
             userEntity.setPassword(userModel.getPassword());
@@ -138,6 +140,14 @@ public class UserServiceImpl implements UserService {
 
         return userRepository.findById(id)
                 .map(userEntity -> modelMapper.map(userEntity, UserDetailsView.class)).orElseThrow();
+    }
+
+    @Override
+    public Set<UserDetailsView> getAllUsers() {
+
+        return userRepository.findAll()
+                .stream()
+                .map(userEntity -> modelMapper.map(userEntity, UserDetailsView.class)).collect(Collectors.toSet());
     }
 
     private boolean isAdmin(UserEntity user) {

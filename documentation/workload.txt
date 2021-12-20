@@ -1,14 +1,10 @@
 WORKLOAD
 
 ~Tano~~~~~~~~~~~~~~~~~~~
-thymeleaf in users panel
-fix edit user
 
 
 
 ~Georgi~~~~~~~~~~~~~~~~~~
-fix navigation and remove buttons on users-panel
-make a take exam tab in navigation
 
 
 ~Kalin~~~~~~~~~~~~~~~~~~~

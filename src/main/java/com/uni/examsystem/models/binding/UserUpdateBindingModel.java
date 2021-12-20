@@ -1,27 +1,13 @@
 package com.uni.examsystem.models.binding;
 
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
 public class UserUpdateBindingModel {
 
     private Long id;
-    @NotNull
-    @NotBlank
     private String currentPassword;
-    @Size(min = 4)
-    @NotNull
-    @NotBlank
     private String password;
-    @Size(min = 4)
     private String confirmPassword;
-    @NotBlank
-    @NotNull
     private String firstName;
-    @NotBlank
-    @NotNull
     private String lastName;
 
 
