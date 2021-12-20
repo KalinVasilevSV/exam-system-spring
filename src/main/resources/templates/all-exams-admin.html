@@ -7,35 +7,47 @@
 </head>
 <body>
 <header th:replace="/fragments/commons::navigation"></header>
-<h1>Exams</h1>
-<hr>
-<button>Back</button>
-<p>A list of all exams entered in the system.</p>
-<p>To view an exam, select the "View" button next to it.</p>
-<p>To add a new exam press "Add" button at the table.</p>
 
-<div>
-    <button >Add</button>
-    <div>
-        <table>
-            <thead>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Duration(min)</th>
-            <th>Status</th>
-            <th>View</th>
-            </thead>
-            <tbody>
-            <tr>
-                <td>0</td>
-                <td>test exam(no DB)</td>
-                <td>40</td>
-                <td>Pending/Live/Finished/Finilized</td>
-                <td><button>View</button></td>
-            </tr>
-            </tbody>
-        </table>
+<section class="bg-dark text-light p-5 p-lg-1 pt-lg-5 text-center text-sm-start">
+    <div class="container">
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <div>
+                <br>
+                <h1>Exams <span class="text-warning"> all </span></h1>
+                <p class="lead my-4">View all exams in the system.</p>
+                <p class="lead my-4">To add a new exam press "Add" button at the table.</p>
+            </div>
+        </div>
     </div>
-</div>
+</section>
+
+<a th:href="@{/index}">Back</a>
+<br>
+<a th:href="@{/exams/add}">Add</a>
+
+<section class=" text-dark p-5 p-lg-1 pt-lg-5 text-center text-sm-start">
+    <table>
+        <thead>
+        <th>ID</th>
+        <th>Exam name</th>
+        <th>Duration(min)</th>
+        <th>Status</th>
+        <th>View</th>
+        <th>Delete</th>
+        </thead>
+        <tbody>
+        <th:block th:each="exam : ${exams}">
+        <tr>
+            <td th:text="${exam.getId()}"></td>
+            <td th:text="${exam.getExamName()}"></td>
+            <td th:text="${exam.getTimeGiven().toMinutes()}"></td>
+            <td th:text="${exam.getStatus().name()}"></td>
+            <td><a th:href="@{/exams/{id}/details(id=${exam.getId()})}">View</a></td>
+            <td><a th:href="@{/exams/{id}/delete(id=${exam.getId()})}">Delete</a></td>
+        </tr>
+        </th:block>
+        </tbody>
+    </table>
+</section>
 </body>
 </html>
