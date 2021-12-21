@@ -24,42 +24,49 @@
     <title>Admin (number)</title>
 </head>
 <header th:replace="/fragments/commons::navigation"></header>
-<section
-        class="bg-dark text-light p-5 p-lg-1 pt-lg-5 text-center text-sm-start"
->
+
+<section class="bg-dark text-light p-5 p-lg-1 pt-lg-5 text-center text-sm-start">
     <div class="container">
         <div class="d-sm-flex align-items-center justify-content-between">
             <div>
                 <br>
-                <h1>Users <span class="text-warning"> control </span></h1>
-                <p class="lead my-4">
-                    Some random text bla bla
-                </p>
-
+                <h1>Users <span class="text-warning"> panel </span></h1>
+                <p class="lead my-4">View all users in the system.</p>
+                <p class="lead my-4">To add a new user press "Add" button at the table.</p>
             </div>
-
         </div>
     </div>
-
 </section>
+
+<a class="btn btn-primary" th:href="@{/}">Back</a>
+<br>
+<a class="btn btn-primary" th:href="@{/users/add}">Add</a>
 
 <br>
 <table class="table">
     <thead>
     <tr>
         <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">StudentID</th>
+        <th scope="col">Username</th>
+        <th scope="col">First name</th>
+        <th scope="col">Last name</th>
+        <th scope="col">FacNo</th>
+        <th>View</th>
+        <th>Delete</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="u : ${users}" th:object="${u}">
-        <th scope="row" th:text="*{id}">1</th>
-        <td th:text="*{firstName}">Mark</td>
-        <td th:text="*{lastName}">Otto</td>
-        <td th:text="*{facNo}">231231</td>
-    </tr>
+    <th:block th:each="user : ${users}">
+        <tr>
+            <td th:text="${user.getId()}"></td>
+            <td th:text="${user.getUsername()}"></td>
+            <td th:text="${user.getFirstName()}"></td>
+            <td th:text="${user.getLastName()}"></td>
+            <td th:text="${user.getFacNo()}"></td>
+            <td><a class="btn btn-primary" th:href="@{/users/{id}/details(id=${user.getId()})}">View</a></td>
+            <td><a class="btn btn-primary" th:href="@{/users/{id}/delete(id=${user.getId()})}">Delete</a></td>
+        </tr>
+    </th:block>
     </tbody>
 </table>
 <body>

@@ -5,6 +5,7 @@ import com.uni.examsystem.models.binding.UserUpdateBindingModel;
 import com.uni.examsystem.models.entities.UserEntity;
 import com.uni.examsystem.models.view.UserDetailsView;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -29,5 +30,5 @@ public interface UserService {
 
     UserDetailsView findById(Long id);
 
-    Set<UserDetailsView> getAllUsers();
+    List<UserDetailsView> getAllUsers();
 }

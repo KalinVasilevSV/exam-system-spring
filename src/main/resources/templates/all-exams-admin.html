@@ -3,7 +3,17 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Exams</title>
+    <title>All Exams</title>
+    <!--    bootstrap links-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <!--    our files-->
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
 <header th:replace="/fragments/commons::navigation"></header>
@@ -21,12 +31,12 @@
     </div>
 </section>
 
-<a th:href="@{/index}">Back</a>
+<a class="btn btn-primary" th:href="@{/}">Back</a>
 <br>
-<a th:href="@{/exams/add}">Add</a>
+<a class="btn btn-primary" th:href="@{/exams/add}">Add</a>
 
 <section class=" text-dark p-5 p-lg-1 pt-lg-5 text-center text-sm-start">
-    <table>
+    <table class="table">
         <thead>
         <th>ID</th>
         <th>Exam name</th>
@@ -42,8 +52,8 @@
             <td th:text="${exam.getExamName()}"></td>
             <td th:text="${exam.getTimeGiven().toMinutes()}"></td>
             <td th:text="${exam.getStatus().name()}"></td>
-            <td><a th:href="@{/exams/{id}/details(id=${exam.getId()})}">View</a></td>
-            <td><a th:href="@{/exams/{id}/delete(id=${exam.getId()})}">Delete</a></td>
+            <td><a class="btn btn-primary" th:href="@{/exams/{id}/details(id=${exam.getId()})}">View</a></td>
+            <td><a class="btn btn-primary" th:href="@{/exams/{id}/delete(id=${exam.getId()})}">Delete</a></td>
         </tr>
         </th:block>
         </tbody>

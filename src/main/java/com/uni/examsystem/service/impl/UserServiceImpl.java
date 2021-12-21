@@ -143,11 +143,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Set<UserDetailsView> getAllUsers() {
+    public List<UserDetailsView> getAllUsers() {
 
         return userRepository.findAll()
                 .stream()
-                .map(userEntity -> modelMapper.map(userEntity, UserDetailsView.class)).collect(Collectors.toSet());
+                .map(userEntity -> modelMapper.map(userEntity, UserDetailsView.class)).collect(Collectors.toList());
     }
 
     private boolean isAdmin(UserEntity user) {
