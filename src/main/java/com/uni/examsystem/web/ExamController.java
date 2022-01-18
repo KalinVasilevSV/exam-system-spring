@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import javax.validation.Valid;
 
@@ -61,6 +62,11 @@ public class ExamController {
         return "edit-exam";
     }
 
+    //TODO
+    //correct mapping
+    //add redirect parameter annotation
+    //correct redirect string
+    //add custom validator
     @PatchMapping("{id}/edit")
     public String editExam(@PathVariable Long id, @Valid ExamBindingModel examModel,
                            BindingResult bindingResult, RedirectAttributes redirectAttributes) {

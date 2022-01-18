@@ -12,7 +12,9 @@ import com.uni.examsystem.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -59,6 +61,8 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByFacNoIgnoreCase(facNumber).isEmpty();
     }
 
+    //TODO correct method
+    //TODO create a separate login method
     @Override
     public void registerAndLoginUser(UserRegisterBindingModel userModel) {
         UserRoleEntity userRole = userRoleRepository.findByRole(UserRoleEnum.USER);
@@ -79,7 +83,9 @@ public class UserServiceImpl implements UserService {
                 principal.getAuthorities()
         );
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+        SecurityContext sc= new SecurityContextImpl();
+        sc.setAuthentication(authentication);
+        SecurityContextHolder.setContext(sc);
     }
 
 
