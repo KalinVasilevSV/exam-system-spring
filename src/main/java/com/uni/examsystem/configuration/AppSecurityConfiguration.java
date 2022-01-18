@@ -45,12 +45,12 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .loginPage("/users/login")
                 .usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
                 .passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
-                .defaultSuccessUrl("/", true)
+                .defaultSuccessUrl("/index", true)
                 .failureForwardUrl("/users/login-error")
                 .and()
                 .logout()
                 .logoutUrl("/users/logout")
-                .logoutSuccessUrl("/")
+                .logoutSuccessUrl("/users/login")
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID");
     }

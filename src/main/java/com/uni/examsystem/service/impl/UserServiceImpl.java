@@ -61,7 +61,6 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByFacNoIgnoreCase(facNumber).isEmpty();
     }
 
-    //TODO correct method
     //TODO create a separate login method
     @Override
     public void registerAndLoginUser(UserRegisterBindingModel userModel) {
@@ -69,7 +68,7 @@ public class UserServiceImpl implements UserService {
         UserEntity newUser = new UserEntity();
 
         newUser.setUsername(userModel.getUsername());
-        newUser.setPassword(userModel.getPassword());
+        newUser.setPassword(passwordEncoder.encode(userModel.getPassword()));
         newUser.setFirstName(userModel.getFirstName());
         newUser.setLastName(userModel.getLastName());
         newUser.setFacNo(userModel.getFacultyNum());

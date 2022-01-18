@@ -47,7 +47,7 @@ public class RegisterController {
         }
 
         userService.registerAndLoginUser(userModel);
-        return "redirect:/";
+        return "redirect:/index";
     }
 
 
