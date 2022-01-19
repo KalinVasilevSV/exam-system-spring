@@ -24,9 +24,23 @@ public class QuestionController {
     }
 
 
+    @ModelAttribute("questionModel")
+    public QuestionBindingModel registerQuestionBindingModel(){return new QuestionBindingModel();}
+
     @GetMapping("/add")
     public String addQuestion() {
         return "add-question";
+    }
+
+    @PostMapping("/add")
+    public String saveQuestion(@Valid QuestionBindingModel questionModel, BindingResult bindingResult,RedirectAttributes redirectAttributes){
+        if(bindingResult.hasErrors()){
+            redirectAttributes.addFlashAttribute("questionModel",questionModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.questionModel",bindingResult);
+            return "redirect:/questions/add";
+        }
+        questionService.saveQuestion(questionModel);
+        return "redirect:/questions/panel";
     }
 
     @GetMapping("/{id}/details")

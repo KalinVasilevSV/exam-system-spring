@@ -36,6 +36,22 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
+    public void saveQuestion(QuestionBindingModel questionModel){
+        QuestionEntity questionEntity = new QuestionEntity();
+        questionEntity.setQuestion(questionModel.getQuestion());
+        questionEntity.setqType(questionModel.getqType());
+        questionEntity.setScore(questionModel.getScore());
+
+        AnswerSetEntity answerSet = new AnswerSetEntity();
+        answerSet.setA(questionModel.getAnswerSet().getA());
+        answerSet.setB(questionModel.getAnswerSet().getB());
+        answerSet.setC(questionModel.getAnswerSet().getC());
+        answerSet.setAnswer(questionModel.getAnswerSet().getAnswer());
+        questionEntity.setAnswerSet(answerSet);
+
+        questionRepository.save(questionEntity);
+    }
+    @Override
     public void updateQuestion(QuestionBindingModel editedQuestion) {
         var questionEntity = questionRepository.findById(editedQuestion.getId()).orElseThrow();
 

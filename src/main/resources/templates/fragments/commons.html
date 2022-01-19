@@ -3,9 +3,9 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head th:fragment="head">
+<head th:fragment="head(title)">
     <meta charset="UTF-8">
-    <title>Exam-System</title>
+    <title th:replace="${title}">Exam-System</title>
 
     <link rel="stylesheet" href="/css/main.css">
 

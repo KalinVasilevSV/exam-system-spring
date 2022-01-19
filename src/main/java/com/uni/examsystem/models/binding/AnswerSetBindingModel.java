@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+//TODO not used, may be removed
 public class AnswerSetBindingModel {
     @NotBlank
     private String a;

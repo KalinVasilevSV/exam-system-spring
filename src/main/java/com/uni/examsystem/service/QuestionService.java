@@ -14,7 +14,7 @@ public interface QuestionService {
 
     Optional<QuestionView> findById(Long id);
 
-
+    void saveQuestion(QuestionBindingModel questionBindingModel);
     void deleteQuestion(Long id);
 
     List<QuestionView> getAllQuestions();
