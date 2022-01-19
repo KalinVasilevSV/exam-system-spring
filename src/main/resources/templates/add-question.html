@@ -25,6 +25,9 @@
 <a class="btn btn-primary" th:href="@{/questions/panel}">Back</a>
 <br>
 
+<p th:if="${question_error}" class="errors alert alert-danger">
+    Question is invalid.
+</p>
 <form th:action="@{/questions/add}" th:method="post" th:object="${questionModel}">
     <div class="form-row">
         <div class="form-group col-md-6">

@@ -49,6 +49,7 @@ public class QuestionServiceImpl implements QuestionService {
         answerSet.setAnswer(questionModel.getAnswerSet().getAnswer());
         questionEntity.setAnswerSet(answerSet);
 
+        answerSetRepository.save(answerSet);
         questionRepository.save(questionEntity);
     }
     @Override

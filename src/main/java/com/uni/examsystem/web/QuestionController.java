@@ -35,6 +35,7 @@ public class QuestionController {
     @PostMapping("/add")
     public String saveQuestion(@Valid QuestionBindingModel questionModel, BindingResult bindingResult,RedirectAttributes redirectAttributes){
         if(bindingResult.hasErrors()){
+            redirectAttributes.addFlashAttribute("question_error",true);
             redirectAttributes.addFlashAttribute("questionModel",questionModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.questionModel",bindingResult);
             return "redirect:/questions/add";
